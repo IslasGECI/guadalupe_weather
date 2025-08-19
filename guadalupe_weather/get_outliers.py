@@ -14,4 +14,4 @@ def get_outliers(Variable):
     lsup = Q3 + 1.5 * IQR
 
     outliers = [x for x in Variable if x < linf or x > lsup]
-    return outliers[0]
+    return outliers
