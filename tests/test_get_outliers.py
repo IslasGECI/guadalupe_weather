@@ -14,4 +14,4 @@ def test_get_outliers():
 def tests_remove_outliers():
     obtained = remove_outliers(data.Variable)
     assert len(obtained) == len(data)
-    assert obtained[-1] == np.nan
+    assert obtained.iloc[-1] == np.nan
