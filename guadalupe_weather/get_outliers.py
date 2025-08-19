@@ -1,9 +1,10 @@
 import numpy as np
 
 
-def remove_outliers(Variable):
-    outliers = get_outliers(Variable)
-    return Variable.replace(outliers, np.nan)
+def remove_outliers_for_column(data, column_name):
+    column_data = data[column_name]
+    outliers = get_outliers(column_data)
+    return column_data.replace(outliers, np.nan)
 
 
 def get_outliers(Variable):

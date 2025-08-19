@@ -1,4 +1,4 @@
-from guadalupe_weather.get_outliers import get_outliers, remove_outliers
+from guadalupe_weather.get_outliers import get_outliers, remove_outliers_for_column
 import pandas as pd
 import numpy as np
 
@@ -12,6 +12,7 @@ def test_get_outliers():
 
 
 def tests_remove_outliers():
-    obtained = remove_outliers(data.Variable)
+    column_name = "Variable"
+    obtained = remove_outliers_for_column(data, column_name)
     assert len(obtained) == len(data)
     assert np.isnan(obtained.iloc[-1])
