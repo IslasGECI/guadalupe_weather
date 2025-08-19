@@ -1,6 +1,10 @@
 import numpy as np
 
 
+def remove_outliers(Variable):
+    return Variable
+
+
 def get_outliers(Variable):
     Q1 = np.percentile(Variable, 25)
     Q3 = np.percentile(Variable, 75)
