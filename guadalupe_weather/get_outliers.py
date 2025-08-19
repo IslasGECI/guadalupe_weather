@@ -2,7 +2,8 @@ import numpy as np
 
 
 def remove_outliers(Variable):
-    return Variable
+    outliers = get_outliers(Variable)
+    return Variable.replace(outliers, np.nan)
 
 
 def get_outliers(Variable):
