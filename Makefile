@@ -13,7 +13,7 @@ all: check coverage mutants
 		setup \
 		tests
 
-module = dummy_transformations
+module = guadalupe_weather
 codecov_token = 6c56bccb-1758-4ed9-8161-97c845591c26
 
 define lint
@@ -49,7 +49,9 @@ format:
 	black --line-length 100 ${module}
 	black --line-length 100 tests
 
-init: setup tests
+init: init_git setup tests
+
+init_git:
 	git config --global --add safe.directory /workdir
 	git config --global user.name "Ciencia de Datos • GECI"
 	git config --global user.email "ciencia.datos@islas.org.mx"
@@ -83,7 +85,7 @@ green: format
 
 refactor: format
 	pytest --verbose \
-	&& (git add ${module}/*.py tests/*.py && git commit -m "♻️  Refactor") \
+	&& (git add ${module}/*.py tests/*.py && git commit -m "♻️ Refactor ${message}") \
 	|| git restore ${module}/*.py tests/*.py
 	chmod g+w -R .
 
