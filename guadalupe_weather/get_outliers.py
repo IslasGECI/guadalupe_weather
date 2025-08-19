@@ -2,9 +2,11 @@ import numpy as np
 
 
 def remove_outliers_for_column(data, column_name):
+    data_copy = data.copy()
     column_data = data[column_name]
     outliers = get_outliers(column_data)
-    return column_data.replace(outliers, np.nan)
+    data_copy[column_name] = column_data.replace(outliers, np.nan)
+    return data_copy
 
 
 def get_outliers(Variable):
