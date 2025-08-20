@@ -7,11 +7,16 @@ from pyparsing import Any
 def remove_outliers_for_column(data, column_name):
     data_copy = data.copy()
     column_data = data[column_name]
-    daily_means = get_daily_mean(data_copy, column_name)
-    linf, lsup = get_tukey_limits(daily_means)
+    linf, lsup = get_tukey_fences_by_daily_means(column_name, data_copy)
     outliers = get_outliers(column_data, linf, lsup)
     data_copy[column_name] = column_data.replace(outliers, np.nan)
     return data_copy
+
+
+def get_tukey_fences_by_daily_means(column_name, data_copy):
+    daily_means = get_daily_mean(data_copy, column_name)
+    linf, lsup = get_tukey_limits(daily_means)
+    return linf, lsup
 
 
 def get_outliers(Variable, inferior_limit, superior_limit) -> list[Any]:
