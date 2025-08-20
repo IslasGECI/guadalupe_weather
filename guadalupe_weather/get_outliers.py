@@ -1,4 +1,5 @@
 import numpy as np
+from pyparsing import Any
 
 
 def remove_outliers_for_column(data, column_name):
@@ -9,12 +10,17 @@ def remove_outliers_for_column(data, column_name):
     return data_copy
 
 
-def get_outliers(Variable):
+def get_outliers(Variable) -> list[Any]:
+    linf, lsup = get_tukey_limits(Variable)
+
+    outliers = [x for x in Variable if x < linf or x > lsup]
+    return outliers
+
+
+def get_tukey_limits(Variable):
     Q1 = np.percentile(Variable, 25)
     Q3 = np.percentile(Variable, 75)
     IQR = Q3 - Q1
     linf = Q1 - 1.5 * IQR
     lsup = Q3 + 1.5 * IQR
-
-    outliers = [x for x in Variable if x < linf or x > lsup]
-    return outliers
+    return linf, lsup
