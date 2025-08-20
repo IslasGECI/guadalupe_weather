@@ -50,19 +50,9 @@ def test_get_multiannual_monthly_temperature():
     obtained_multianual_monthly_temperature = get_multiannual_monthly_temperature(
         monthly_average_rain_path, years
     )
-    obtained_october_multianual_monthly_temperature = obtained_multianual_monthly_temperature.iloc[
-        9
-    ]
-    expected_october_multianual_monthly_temperature = 14.4
-    assert (
-        obtained_october_multianual_monthly_temperature
-        == expected_october_multianual_monthly_temperature
-    )
-    obtained_december_multianual_monthly_temperature = obtained_multianual_monthly_temperature.iloc[
-        11
-    ]
-    expected_december_multianual_monthly_temperature = 12.025
-    assert (
-        obtained_december_multianual_monthly_temperature
-        == expected_december_multianual_monthly_temperature
-    )
+    obtained_october_temperature = obtained_multianual_monthly_temperature.iloc[9]
+    expected_october_temperature = 14.4
+    assert obtained_october_temperature == expected_october_temperature
+    obtained_december_temperature = obtained_multianual_monthly_temperature.iloc[11]
+    expected_december_temperature = 12.025
+    assert obtained_december_temperature == expected_december_temperature

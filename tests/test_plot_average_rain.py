@@ -182,19 +182,9 @@ def test_get_multiannual_monthly_cumulative_rain():
     obtained_multianual_monthly_cumulative_rain = get_multiannual_monthly_cumulative_rain(
         monthly_average_rain_path, years
     )
-    obtained_january_multianual_monthly_cumulative_rain = (
-        obtained_multianual_monthly_cumulative_rain.iloc[0]
-    )
-    expected_january_multianual_monthly_cumulative_rain = 10.3
-    assert (
-        obtained_january_multianual_monthly_cumulative_rain
-        == expected_january_multianual_monthly_cumulative_rain
-    )
-    obtained_september_multianual_monthly_cumulative_rain = (
-        obtained_multianual_monthly_cumulative_rain.iloc[8]
-    )
-    expected_september_multianual_monthly_cumulative_rain = 8.065
-    assert (
-        obtained_september_multianual_monthly_cumulative_rain
-        == expected_september_multianual_monthly_cumulative_rain
-    )
+    obtained_january_cumulative_rain = obtained_multianual_monthly_cumulative_rain.iloc[0]
+    expected_january_cumulative_rain = 10.3
+    assert obtained_january_cumulative_rain == expected_january_cumulative_rain
+    obtained_september_cumulative_rain = obtained_multianual_monthly_cumulative_rain.iloc[8]
+    expected_september_cumulative_rain = 8.065
+    assert obtained_september_cumulative_rain == expected_september_cumulative_rain

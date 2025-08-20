@@ -79,15 +79,15 @@ def get_y_max_limit(all_years_data):
 
 def get_string_label_temperature(years):
     if isinstance(years, list):
-        return f"Temperature in {*years,}"
+        return f"Temperature in {*years, }"
     return f"Temperature in {years}"
 
 
 def get_string_label(years):
     if isinstance(years, list):
-        return f"Rain in {*years,}"
+        return f"Rain in {*years, }"
     return f"Rain in {years}"
 
 
 def get_months_labels_list() -> list:
-    return calendar.month_name[1:]
+    return list(calendar.month_name[1:])
