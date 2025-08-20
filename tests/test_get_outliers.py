@@ -5,8 +5,24 @@ import numpy as np
 outlier = 50
 data = pd.DataFrame(
     {
-        "Variable": [2, 3, 5, 7, 9, 11, 14, 18, 22, outlier, np.nan],
-        "Variable2": [np.nan, 2, 3, 5, 7, 9, 11, 14, 18, outlier, 22],
+        "Date": [
+            "30/Sep/2008",
+            "30/Sep/2008",
+            "30/Sep/2008",
+            "30/Sep/2008",
+            "30/Sep/2008",
+            "30/Sep/2008",
+            "30/Sep/2008",
+            "30/Sep/2008",
+            "30/Sep/2008",
+            "30/Sep/2008",
+            "30/Sep/2008",
+            "01/Oct/2008",
+            "01/Oct/2008",
+            "01/Oct/2008",
+        ],
+        "Variable": [2, 3, 5, 7, 9, 11, 14, 18, 22, outlier, np.nan, 1, 2, 3],
+        "Variable2": [np.nan, 2, 3, 5, 7, 9, 11, 14, 18, outlier, 22, 1, 2, 3],
     }
 )
 
@@ -22,4 +38,4 @@ def tests_remove_outliers():
     column_name = "Variable"
     obtained = remove_outliers_for_column(data, column_name)
     assert obtained.shape == data.shape
-    assert np.isnan(obtained[column_name].iloc[-1])
+    assert np.isnan(obtained[column_name].iloc[-4])
