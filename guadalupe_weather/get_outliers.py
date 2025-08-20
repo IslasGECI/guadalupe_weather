@@ -6,17 +6,12 @@ def remove_outliers_for_column(data, column_name):
     data_copy = data.copy()
     column_data = data[column_name]
     linf, lsup = get_tukey_limits(column_data)
-    outliers = xxget_outliers(column_data, linf, lsup)
+    outliers = get_outliers(column_data, linf, lsup)
     data_copy[column_name] = column_data.replace(outliers, np.nan)
     return data_copy
 
 
-def get_outliers(Variable) -> list[Any]:
-    linf, lsup = get_tukey_limits(Variable)
-    return xxget_outliers(Variable, linf, lsup)
-
-
-def xxget_outliers(Variable, inferior_limit, superior_limit) -> list[Any]:
+def get_outliers(Variable, inferior_limit, superior_limit) -> list[Any]:
     outliers = [x for x in Variable if x < inferior_limit or x > superior_limit]
     return outliers
 

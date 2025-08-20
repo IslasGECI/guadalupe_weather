@@ -1,4 +1,4 @@
-from guadalupe_weather.get_outliers import xxget_outliers, remove_outliers_for_column
+from guadalupe_weather.get_outliers import get_outliers, remove_outliers_for_column
 import pandas as pd
 import numpy as np
 
@@ -14,7 +14,7 @@ data = pd.DataFrame(
 def test_get_outliers():
     superior_limit = 25
     inferior_limit = 0
-    obtained = xxget_outliers(data.Variable, inferior_limit, superior_limit)
+    obtained = get_outliers(data.Variable, inferior_limit, superior_limit)
     assert obtained == [outlier]
 
 
