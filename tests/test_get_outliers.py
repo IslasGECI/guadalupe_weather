@@ -48,6 +48,8 @@ def tests_remove_outliers():
 
 
 def test_get_tukey_fences_by_daily_means_for_variables_of_interest():
-    variables_of_interes = ["Variable", "Variable2"]
-    obtained = get_tukey_fences_by_daily_means_for_variables_of_interest(data, variables_of_interes)
-    assert obtained.shape == (2, 2)
+    variables_of_interest = ["Variable", "Variable2"]
+    obtained = get_tukey_fences_by_daily_means_for_variables_of_interest(
+        data, variables_of_interest
+    )
+    assert np.shape(obtained) == (2, 2)
