@@ -5,7 +5,8 @@ from pyparsing import Any
 def remove_outliers_for_column(data, column_name):
     data_copy = data.copy()
     column_data = data[column_name]
-    outliers = get_outliers(column_data)
+    linf, lsup = get_tukey_limits(column_data)
+    outliers = xxget_outliers(column_data, linf, lsup)
     data_copy[column_name] = column_data.replace(outliers, np.nan)
     return data_copy
 
