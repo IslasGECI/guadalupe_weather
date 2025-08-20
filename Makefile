@@ -67,6 +67,7 @@ mutants: setup
 	mutmut run
 
 setup: clean install
+	mypy --install-types --non-interactive
 
 tests:
 	pytest --verbose tests
