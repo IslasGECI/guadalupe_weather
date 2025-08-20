@@ -1,2 +1,2 @@
-def get_daily_mean(data):
-    return data.groupby(["Date"])["Temp_Out"].mean()
+def get_daily_mean(data, variable):
+    return data.groupby(["Date"])[variable].mean()
