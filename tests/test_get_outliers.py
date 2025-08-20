@@ -1,4 +1,8 @@
-from guadalupe_weather.get_outliers import get_outliers, remove_outliers_for_column
+from guadalupe_weather.get_outliers import (
+    get_outliers,
+    remove_outliers_for_column,
+    get_tukey_fences_by_daily_means_for_variables_of_interest,
+)
 import pandas as pd
 import numpy as np
 
@@ -41,3 +45,9 @@ def tests_remove_outliers():
     assert obtained.shape == data.shape
     assert np.isnan(obtained[column_name].iloc[-5])
     assert np.isnan(obtained[column_name].iloc[-6])
+
+
+def test_get_tukey_fences_by_daily_means_for_variables_of_interest():
+    variables_of_interes = ["Variable", "Variable2"]
+    obtained = get_tukey_fences_by_daily_means_for_variables_of_interest(data, variables_of_interes)
+    assert obtained.shape == (2, 2)
