@@ -5,8 +5,8 @@ import numpy as np
 outlier = 50
 data = pd.DataFrame(
     {
-        "Variable": [2, 3, 5, 7, 9, 11, 14, 18, 22, outlier],
-        "Variable2": [2, 3, 5, 7, 9, 11, 14, 18, outlier, 22],
+        "Variable": [2, 3, 5, 7, 9, 11, 14, 18, 22, outlier, np.nan],
+        "Variable2": [np.nan, 2, 3, 5, 7, 9, 11, 14, 18, outlier, 22],
     }
 )
 
