@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 
-from guadalupe_weather import (
+from guadalupe_weather.get_weather_data import (
     get_monthly_average_temperature_by_zone,
     get_box_plot_data_temperature,
     get_monthly_temperature_by_year,

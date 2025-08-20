@@ -4,7 +4,7 @@ import os
 import pandas as pd
 import numpy as np
 
-from guadalupe_weather import (
+from guadalupe_weather.get_weather_data import (
     get_box_plot_data_temperature,
     get_box_plot_data,
     get_data_by_year,
@@ -12,8 +12,11 @@ from guadalupe_weather import (
     get_monthly_average_cumulative_rain_by_zone,
     get_monthly_cumulative_rain_by_year,
     get_monthly_temperature_by_year,
-    get_months_labels_list,
     get_multiannual_monthly_cumulative_rain,
+)
+
+from guadalupe_weather.plot_weather_variables import (
+    get_months_labels_list,
     get_string_label_temperature,
     get_string_label,
     get_y_max_limit,
