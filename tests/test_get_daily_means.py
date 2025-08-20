@@ -14,5 +14,4 @@ def test_get_daily_mean():
     obtained = get_daily_mean(data, "Temp_Out")
     assert len(obtained) == 2
     obtained = get_daily_mean(data, "Rain_Rate")
-    print(obtained)
     assert obtained[0] == 2

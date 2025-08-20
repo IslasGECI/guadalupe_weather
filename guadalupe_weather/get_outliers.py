@@ -12,7 +12,11 @@ def remove_outliers_for_column(data, column_name):
 
 def get_outliers(Variable) -> list[Any]:
     linf, lsup = get_tukey_limits(Variable)
-    outliers = [x for x in Variable if x < linf or x > lsup]
+    return xxget_outliers(Variable, linf, lsup)
+
+
+def xxget_outliers(Variable, inferior_limit, superior_limit) -> list[Any]:
+    outliers = [x for x in Variable if x < inferior_limit or x > superior_limit]
     return outliers
 
 
