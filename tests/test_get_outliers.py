@@ -37,5 +37,8 @@ def test_get_outliers():
 def tests_remove_outliers():
     column_name = "Variable"
     obtained = remove_outliers_for_column(data, column_name)
+
+    print(obtained)
     assert obtained.shape == data.shape
     assert np.isnan(obtained[column_name].iloc[-5])
+    assert np.isnan(obtained[column_name].iloc[-6])
