@@ -1,3 +1,5 @@
+from guadalupe_weather.get_daily_mean import get_daily_mean
+
 import numpy as np
 from pyparsing import Any
 
@@ -5,7 +7,8 @@ from pyparsing import Any
 def remove_outliers_for_column(data, column_name):
     data_copy = data.copy()
     column_data = data[column_name]
-    linf, lsup = get_tukey_limits(column_data)
+    daily_means = get_daily_mean(data_copy, column_name)
+    linf, lsup = get_tukey_limits(daily_means)
     outliers = get_outliers(column_data, linf, lsup)
     data_copy[column_name] = column_data.replace(outliers, np.nan)
     return data_copy
