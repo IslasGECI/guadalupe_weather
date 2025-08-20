@@ -13,6 +13,10 @@ def remove_outliers_for_column(data, column_name):
     return data_copy
 
 
+def get_tukey_fences_by_daily_means_for_variables_of_interest(data, list_of_variables):
+    return [get_tukey_fences_by_daily_means(data, variable) for variable in list_of_variables]
+
+
 def get_tukey_fences_by_daily_means(data_copy, column_name):
     daily_means = get_daily_mean(data_copy, column_name)
     linf, lsup = get_tukey_limits(daily_means)
