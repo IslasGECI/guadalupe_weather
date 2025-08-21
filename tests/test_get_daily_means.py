@@ -1,4 +1,4 @@
-from guadalupe_weather.get_daily_mean import get_daily_mean
+from guadalupe_weather.get_daily_mean import get_daily_mean, get_daily_max_and_min
 import pandas as pd
 
 
@@ -15,3 +15,5 @@ def test_get_daily_mean():
     assert len(obtained) == 2
     obtained = get_daily_mean(data, "Rain_Rate")
     assert obtained.iloc[0] == 2
+    obtained = get_daily_max_and_min(data, "Temp_Out")
+    assert obtained.shape == (2, 3)
