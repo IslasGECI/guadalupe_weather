@@ -16,4 +16,5 @@ def test_get_daily_mean():
     obtained = get_daily_mean(data, "Rain_Rate")
     assert obtained.iloc[0] == 2
     obtained = get_daily_max_and_min(data, "Temp_Out")
+    print(obtained)
     assert obtained.shape == (2, 3)
