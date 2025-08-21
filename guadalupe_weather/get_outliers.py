@@ -1,7 +1,7 @@
 from guadalupe_weather.get_daily_mean import get_daily_mean
 
 import numpy as np
-from pyparsing import Any
+from typing import Any
 
 
 def remove_outliers_for_column(data, column_name):
