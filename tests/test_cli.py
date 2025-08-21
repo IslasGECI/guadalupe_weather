@@ -1,5 +1,7 @@
-from guadalupe_weather.cli import cli
 from typer.testing import CliRunner
+import pandas as pd
+
+from guadalupe_weather.cli import cli
 import geci_test_tools as gtt
 
 runner = CliRunner()
@@ -14,6 +16,8 @@ def test_remove_outliers():
     assert result.exit_code == 0
     expected_path = "no_outliers_estaciones_metereologicas_guadalupe_for_tests.csv"
     gtt.assert_exist(expected_path)
+    obtained = pd.read_csv(expected_path)
+    assert obtained.loc[9, "Temp_Out"].isna()
 
 
 def test_version():
