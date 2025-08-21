@@ -15,8 +15,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.2.0] - 2025-08-21
+
+### Added
+- CLI command `remove-outliers`. Removes outliers using Tukey fences on a specified column.
+
+
 ## [0.1.0] - 2025-08-19
 
+### Added
+- CLI command `version`
+- Extracted package from [`clima_guadalupe`](https://bitbucket.org/IslasGECI/clima_guadalupe/src/develop/
+)
 
 [unreleased]: https://github.com/IslasGECI/guadalupe_weather/compare/v1.1.1...HEAD
 [0.1.0]: https://github.com/IslasGECI/guadalupe_weather/releases/tag/v0.0.1
