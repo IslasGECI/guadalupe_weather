@@ -23,3 +23,11 @@ tests_dir = [ "tests/" ]
 [[tool.mypy.overrides]]
 module = ["geci_plots.*"]
 ignore_missing_imports = true
+
+[tool.flit.metadata.requires-extra]
+dev = [
+	"matplotlib-stubs",
+	"pandas-stubs",
+	"types-click",
+]
+

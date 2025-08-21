@@ -26,6 +26,7 @@ define lint
 endef
 
 check:
+	pip install --editable ".[dev]"
 	black --check --line-length 100 ${module}
 	black --check --line-length 100 tests
 	flake8 --max-line-length 100 ${module}
@@ -67,7 +68,6 @@ mutants: setup
 	mutmut run
 
 setup: clean install
-	mypy --install-types --non-interactive
 
 tests:
 	pytest --verbose tests
