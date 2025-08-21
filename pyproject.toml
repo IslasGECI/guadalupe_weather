@@ -30,4 +30,5 @@ dev = [
 	"pandas-stubs",
 	"types-click",
 ]
-
+[tool.flit.scripts]
+guadalupe-weather = "guadalupe_weather.cli:cli"
