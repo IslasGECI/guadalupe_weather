@@ -5,5 +5,10 @@ cli = typer.Typer()
 
 
 @cli.command()
+def remove_outliers():
+    pass
+
+
+@cli.command()
 def version():
     print(gw.__version__)
