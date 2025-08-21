@@ -2,6 +2,7 @@ from guadalupe_weather.get_outliers import (
     get_outliers,
     remove_outliers_for_column,
     get_tukey_fences_by_daily_means_for_variables_of_interest,
+    get_tukey_fences_by_daily_max_and_min,
 )
 import pandas as pd
 import numpy as np
@@ -53,3 +54,10 @@ def test_get_tukey_fences_by_daily_means_for_variables_of_interest():
         data, variables_of_interest
     )
     assert np.shape(obtained) == (2, 2)
+
+
+def test_get_tukey_fences_by_daily_max_and_min():
+    column_name = "Variable"
+    obtained_max_inferior, obtained_max_superior, obtained_min_inferior, obtained_min_superior = (
+        get_tukey_fences_by_daily_max_and_min(data, column_name)
+    )
