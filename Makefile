@@ -14,7 +14,7 @@ all: check coverage mutants
 		tests
 
 module = guadalupe_weather
-codecov_token = 6c56bccb-1758-4ed9-8161-97c845591c26
+codecov_token = 74cfa5bd-96a9-4649-b7dc-5e376de080e1
 
 define lint
 	pylint \
