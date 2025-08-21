@@ -19,7 +19,6 @@ def get_tukey_fences_by_daily_means_for_variables_of_interest(data, list_of_vari
 
 def get_tukey_fences_by_daily_max_and_min(data, column_name):
     daily_max_min = get_daily_max_and_min(data, column_name)
-    print(daily_max_min.max)
     max_inferior, max_superior = get_tukey_limits(daily_max_min["max"])
     min_inferior, min_superior = get_tukey_limits(daily_max_min["min"])
     return max_inferior, max_superior, min_inferior, min_superior
