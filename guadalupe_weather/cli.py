@@ -20,7 +20,7 @@ def remove_outliers(
     no_outliers_df = remove_outliers_for_column(data, column_name)
     no_outliers_df.to_csv(output_path, index=False)
     inferior_limit, superior_limit = get_tukey_fences_by_daily_means(data, column_name)
-    print(f"(Inferior: {inferior_limit:.2f}, Superior: {superior_limit:.2f})")
+    print(f"{column_name} limits: (Inferior: {inferior_limit:.2f}, Superior: {superior_limit:.2f})")
 
 
 @cli.command()
