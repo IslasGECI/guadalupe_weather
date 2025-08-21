@@ -9,11 +9,13 @@ cli = typer.Typer()
 
 @cli.command()
 def remove_outliers(
-    input_path: Annotated[str, typer.Option()], column_name: Annotated[str, typer.Option()]
+    input_path: Annotated[str, typer.Option()],
+    column_name: Annotated[str, typer.Option()],
+    output_path: Annotated[str, typer.Option()],
 ):
     data = pd.read_csv(input_path)
     no_outliers_df = remove_outliers_for_column(data, column_name)
-    no_outliers_df.to_csv("no_outliers_estaciones_metereologicas_guadalupe_for_tests.csv")
+    no_outliers_df.to_csv(output_path)
 
 
 @cli.command()
