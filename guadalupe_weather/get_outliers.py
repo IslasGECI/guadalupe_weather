@@ -1,4 +1,4 @@
-from guadalupe_weather.get_daily_mean import get_daily_mean
+from guadalupe_weather.get_daily_mean import get_daily_mean, get_daily_max_and_min
 
 import numpy as np
 from typing import Any
@@ -15,6 +15,14 @@ def remove_outliers_for_column(data, column_name):
 
 def get_tukey_fences_by_daily_means_for_variables_of_interest(data, list_of_variables):
     return [get_tukey_fences_by_daily_means(data, variable) for variable in list_of_variables]
+
+
+def get_tukey_fences_by_daily_max_and_min(data, column_name):
+    daily_max_min = get_daily_max_and_min(data, column_name)
+    print(daily_max_min.max)
+    max_inferior, max_superior = get_tukey_limits(daily_max_min["max"])
+    min_inferior, min_superior = get_tukey_limits(daily_max_min["min"])
+    return max_inferior, max_superior, min_inferior, min_superior
 
 
 def get_tukey_fences_by_daily_means(data_copy, column_name):
