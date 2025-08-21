@@ -27,6 +27,7 @@ def test_remove_outliers():
     assert result.exit_code == 0
     gtt.assert_exist(output_path)
     obtained = pd.read_csv(output_path)
+    assert obtained.shape == (10, 39)
     assert np.isnan(obtained.loc[9, "Temp_Out"])
 
 
