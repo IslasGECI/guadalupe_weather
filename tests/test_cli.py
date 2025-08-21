@@ -33,5 +33,5 @@ def test_remove_outliers():
 
 def test_version():
     result = runner.invoke(cli, ["version"])
-    expected_version = "0.1.0"
+    expected_version = "0.2.0"
     assert expected_version in result.stdout
