@@ -9,9 +9,9 @@ runner = CliRunner()
 
 
 def test_remove_outliers():
-    input_path = "tests/data/estaciones_metereologicas_guadalupe_for_tests.csv"
+    input_path = "tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv"
     column_name = "Temp_Out"
-    output_path = "no_outliers_estaciones_metereologicas_guadalupe_for_tests.csv"
+    output_path = "tests/no_outliers_estaciones_meteorologicas_guadalupe_for_tests.csv"
     result = runner.invoke(
         cli,
         [
