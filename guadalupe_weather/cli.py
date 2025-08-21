@@ -15,7 +15,7 @@ def remove_outliers(
 ):
     data = pd.read_csv(input_path)
     no_outliers_df = remove_outliers_for_column(data, column_name)
-    no_outliers_df.to_csv(output_path)
+    no_outliers_df.to_csv(output_path, index=False)
 
 
 @cli.command()
