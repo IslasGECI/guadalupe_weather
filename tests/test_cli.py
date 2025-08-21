@@ -11,13 +11,22 @@ runner = CliRunner()
 def test_remove_outliers():
     input_path = "tests/data/estaciones_metereologicas_guadalupe_for_tests.csv"
     column_name = "Temp_Out"
+    output_path = "no_outliers_estaciones_metereologicas_guadalupe_for_tests.csv"
     result = runner.invoke(
-        cli, ["remove-outliers", "--input-path", input_path, "--column-name", column_name]
+        cli,
+        [
+            "remove-outliers",
+            "--input-path",
+            input_path,
+            "--column-name",
+            column_name,
+            "--output-path",
+            output_path,
+        ],
     )
     assert result.exit_code == 0
-    expected_path = "no_outliers_estaciones_metereologicas_guadalupe_for_tests.csv"
-    gtt.assert_exist(expected_path)
-    obtained = pd.read_csv(expected_path)
+    gtt.assert_exist(output_path)
+    obtained = pd.read_csv(output_path)
     assert np.isnan(obtained.loc[9, "Temp_Out"])
 
 
