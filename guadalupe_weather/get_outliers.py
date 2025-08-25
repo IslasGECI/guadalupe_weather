@@ -26,6 +26,7 @@ def get_tukey_fences_by_variable(data, variable):
 def select_tukey_method_by_variable(variable):
     method_by_variable = {
         "Rain": get_tukey_fences_for_rain,
+        "Rain_Rate": get_tukey_fences_for_rain,
         "Dew_Pt": get_tukey_fences_for_min_variables,
         "Heat_D_D": get_tukey_fences_for_max_variables,
         "Hi_Speed": get_tukey_fences_for_max_and_min_variables,
