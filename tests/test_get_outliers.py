@@ -74,3 +74,7 @@ def test_get_tukey_fences_by_variable():
     obtained_inferior, obtained_superior = get_tukey_fences_by_variable(data, variable)
     assert obtained_inferior == 0
     assert obtained_superior == 449.25
+    variable = "Dew_Pt"
+    obtained_inferior, obtained_superior = get_tukey_fences_by_variable(data, variable)
+    assert obtained_inferior == -4
+    assert obtained_superior == 17.1
