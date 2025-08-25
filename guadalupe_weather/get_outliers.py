@@ -44,10 +44,6 @@ def remove_outliers_for_column(data, column_name):
     return data_copy
 
 
-def get_tukey_fences_by_daily_means_for_variables_of_interest(data, list_of_variables):
-    return [get_tukey_fences_by_daily_means(data, variable) for variable in list_of_variables]
-
-
 def get_tukey_fences_for_rain(data, variable):
     remove_zeros = data[data[variable] != 0]
     _, superior = get_tukey_fences_by_daily_means(remove_zeros, variable)
