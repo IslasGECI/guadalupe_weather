@@ -6,6 +6,7 @@ from guadalupe_weather.get_outliers import (
     get_tukey_fences_by_variable,
     get_tukey_fences_for_max_and_min_variables,
     get_tukey_fences_for_rain,
+    remove_outliers,
     select_tukey_method_by_variable,
 )
 import pandas as pd
@@ -44,13 +45,19 @@ def test_get_outliers():
     assert obtained == [outlier]
 
 
-def tests_remove_outliers():
+def tests_remove_outliers_for_column():
     column_name = "Variable"
     obtained = remove_outliers_for_column(data, column_name)
 
     assert obtained.shape == data.shape
     assert np.isnan(obtained[column_name].iloc[-5])
     assert np.isnan(obtained[column_name].iloc[-6])
+
+
+def tests_remove_outliers():
+    data = pd.read_csv("tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv")
+    obtained = remove_outliers(data)
+    assert obtained.Rain.isna().sum() == 1
 
 
 def test_get_tukey_fences_by_daily_means_for_variables_of_interest():
