@@ -1,14 +1,15 @@
 from guadalupe_weather.get_outliers import (
     get_outliers,
-    remove_outliers_for_column,
-    get_tukey_fences_by_daily_means_for_variables_of_interest,
     get_tukey_fences_by_daily_max_and_min,
-    get_tukey_fences_for_max_variables,
+    get_tukey_fences_by_daily_means_for_variables_of_interest,
     get_tukey_fences_for_max_and_min_variables,
-    get_tukey_fences_for_rain,
+    get_tukey_fences_for_max_variables,
     get_tukey_fences_for_min_variables,
+    get_tukey_fences_for_rain,
+    remove_outliers_for_column,
     remove_outliers,
     select_tukey_method_by_variable,
+    TukeyMethodSelector,
 )
 import pandas as pd
 import numpy as np
@@ -107,21 +108,23 @@ def test_get_tukey_fences_by_variable():
 
 
 def test_select_tukey_method_by_variable():
+    tukey_selector = TukeyMethodSelector()
+
     variable = "Rain_Rate"
-    obtained_method = select_tukey_method_by_variable(variable)
+    obtained_method = tukey_selector.select_method(variable)
     assert obtained_method == get_tukey_fences_for_rain
     variable = "Wind_Chill"
-    obtained_method = select_tukey_method_by_variable(variable)
+    obtained_method = tukey_selector.select_method(variable)
     assert obtained_method == get_tukey_fences_for_max_and_min_variables
     variable = "Heat_Index"
-    obtained_method = select_tukey_method_by_variable(variable)
+    obtained_method = tukey_selector.select_method(variable)
     assert obtained_method == get_tukey_fences_for_max_and_min_variables
     variable = "Temp_Out"
-    obtained_method = select_tukey_method_by_variable(variable)
+    obtained_method = tukey_selector.select_method(variable)
     assert obtained_method == get_tukey_fences_for_max_and_min_variables
     variable = "Low_Temp"
-    obtained_method = select_tukey_method_by_variable(variable)
+    obtained_method = tukey_selector.select_method(variable)
     assert obtained_method == get_tukey_fences_for_max_and_min_variables
     variable = "Hi_Temp"
-    obtained_method = select_tukey_method_by_variable(variable)
+    obtained_method = tukey_selector.select_method(variable)
     assert obtained_method == get_tukey_fences_for_max_and_min_variables

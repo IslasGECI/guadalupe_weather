@@ -26,6 +26,25 @@ def remove_outliers(data):
     return data_copy
 
 
+class TukeyMethodSelector:
+    def __init__(self):
+        self.variables = method_by_variable = {
+            "Rain": get_tukey_fences_for_rain,
+            "Rain_Rate": get_tukey_fences_for_rain,
+            "Dew_Pt": get_tukey_fences_for_min_variables,
+            "Heat_D_D": get_tukey_fences_for_max_variables,
+            "Hi_Speed": get_tukey_fences_for_max_and_min_variables,
+            "Wind_Chill": get_tukey_fences_for_max_and_min_variables,
+            "Heat_Index": get_tukey_fences_for_max_and_min_variables,
+            "Temp_Out": get_tukey_fences_for_max_and_min_variables,
+            "Hi_Temp": get_tukey_fences_for_max_and_min_variables,
+            "Low_Temp": get_tukey_fences_for_max_and_min_variables,
+        }
+
+    def select_method(self, variable):
+        return self.variables[variable]
+
+
 def remove_outliers_for_column(data, column_name):
     data_copy = data.copy()
     column_data = data[column_name]
