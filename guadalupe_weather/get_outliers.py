@@ -33,6 +33,8 @@ def select_tukey_method_by_variable(variable):
         "Wind_Chill": get_tukey_fences_for_max_and_min_variables,
         "Heat_Index": get_tukey_fences_for_max_and_min_variables,
         "Temp_Out": get_tukey_fences_for_max_and_min_variables,
+        "Hi_Temp": get_tukey_fences_for_max_and_min_variables,
+        "Low_Temp": get_tukey_fences_for_max_and_min_variables,
     }
     return method_by_variable[variable]
 
