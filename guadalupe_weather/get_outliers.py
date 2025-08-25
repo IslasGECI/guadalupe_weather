@@ -19,7 +19,7 @@ def _remove_outliers(data):
 
 class TukeyMethodSelector:
     def __init__(self):
-        self.variables = method_by_variable = {
+        self.variables = {
             "Rain": get_tukey_fences_for_rain,
             "Rain_Rate": get_tukey_fences_for_rain,
             "Dew_Pt": get_tukey_fences_for_min_variables,

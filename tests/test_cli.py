@@ -10,7 +10,6 @@ runner = CliRunner()
 
 def test_remove_outliers():
     input_path = "tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv"
-    column_name = "Temp_Out"
     output_path = "tests/no_outliers_estaciones_meteorologicas_guadalupe_for_tests.csv"
     result = runner.invoke(
         cli,
@@ -56,5 +55,5 @@ def test_remove_outliers_for_column():
 
 def test_version():
     result = runner.invoke(cli, ["version"])
-    expected_version = "0.2.2"
+    expected_version = "0.3.0"
     assert expected_version in result.stdout
