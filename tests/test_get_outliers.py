@@ -3,6 +3,7 @@ from guadalupe_weather.get_outliers import (
     remove_outliers_for_column,
     get_tukey_fences_by_daily_means_for_variables_of_interest,
     get_tukey_fences_by_daily_max_and_min,
+    get_tukey_fences_by_variable,
 )
 import pandas as pd
 import numpy as np
@@ -61,3 +62,11 @@ def test_get_tukey_fences_by_daily_max_and_min():
     obtained_max_inferior, obtained_max_superior, obtained_min_inferior, obtained_min_superior = (
         get_tukey_fences_by_daily_max_and_min(data, column_name)
     )
+
+
+def test_get_tukey_fences_by_variable():
+    variable = "Rain"
+    data = pd.read_csv("tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv")
+    obtained_inferior, obtained_superior = get_tukey_fences_by_variable(data, variable)
+    assert obtained_inferior == 77.375
+    assert obtained_superior == 226.125
