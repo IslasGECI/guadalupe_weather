@@ -106,3 +106,6 @@ def test_select_tukey_method_by_variable():
     variable = "Heat_Index"
     obtained_method = select_tukey_method_by_variable(variable)
     assert obtained_method == get_tukey_fences_for_max_and_min_variables
+    variable = "Temp_Out"
+    obtained_method = select_tukey_method_by_variable(variable)
+    assert obtained_method == get_tukey_fences_for_max_and_min_variables
