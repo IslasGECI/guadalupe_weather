@@ -99,3 +99,6 @@ def test_select_tukey_method_by_variable():
     variable = "Rain_Rate"
     obtained_method = select_tukey_method_by_variable(variable)
     assert obtained_method == get_tukey_fences_for_rain
+    variable = "Wind_Chill"
+    obtained_method = select_tukey_method_by_variable(variable)
+    assert obtained_method == get_tukey_fences_for_max_and_min_variables
