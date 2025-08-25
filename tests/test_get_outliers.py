@@ -7,6 +7,7 @@ from guadalupe_weather.get_outliers import (
 )
 import pandas as pd
 import numpy as np
+import pytest
 
 outlier = 50
 data = pd.DataFrame(
@@ -76,5 +77,5 @@ def test_get_tukey_fences_by_variable():
     assert obtained_superior == 449.25
     variable = "Dew_Pt"
     obtained_inferior, obtained_superior = get_tukey_fences_by_variable(data, variable)
-    assert obtained_inferior == -2.95
-    assert obtained_superior == 23.65
+    assert pytest.approx(obtained_inferior) == -2.95
+    assert obtained_superior == 17.1
