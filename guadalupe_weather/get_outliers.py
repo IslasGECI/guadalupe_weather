@@ -6,20 +6,21 @@ from typing import Any
 
 def remove_outliers(data):
     data_copy = data.copy()
-    variables = [
-        "Rain",
-        "Rain_Rate",
-        "Dew_Pt",
-        "Heat_D_D",
-        "Hi_Speed",
-        "Wind_Chill",
-        "Heat_Index",
-        "Temp_Out",
-        "Hi_Temp",
-        "Low_Temp",
-    ]
-    for column in variables:
-        linf, lsup = get_tukey_fences_by_variable(data_copy, column)
+    method_by_variable = {
+        "Rain": get_tukey_fences_for_rain,
+        "Rain_Rate": get_tukey_fences_for_rain,
+        "Dew_Pt": get_tukey_fences_for_min_variables,
+        "Heat_D_D": get_tukey_fences_for_max_variables,
+        "Hi_Speed": get_tukey_fences_for_max_and_min_variables,
+        "Wind_Chill": get_tukey_fences_for_max_and_min_variables,
+        "Heat_Index": get_tukey_fences_for_max_and_min_variables,
+        "Temp_Out": get_tukey_fences_for_max_and_min_variables,
+        "Hi_Temp": get_tukey_fences_for_max_and_min_variables,
+        "Low_Temp": get_tukey_fences_for_max_and_min_variables,
+    }
+    for column in method_by_variable.keys():
+        method = method_by_variable[column]
+        linf, lsup = method(data, column)
         outliers = get_outliers(data_copy[column], linf, lsup)
         data_copy[column] = data_copy[column].replace(outliers, np.nan)
     return data_copy

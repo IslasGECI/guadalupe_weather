@@ -83,7 +83,7 @@ def test_get_tukey_fences_by_variable():
     data = pd.read_csv("tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv")
 
     variable = "Rain"
-    obtained_inferior, obtained_superior = get_tukey_fences_by_variable(data, variable)
+    obtained_inferior, obtained_superior = get_tukey_fences_for_rain(data, variable)
     assert obtained_inferior == 0
     assert obtained_superior == 449.25
 
