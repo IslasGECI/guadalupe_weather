@@ -18,8 +18,6 @@ def test_remove_outliers():
             "remove-outliers",
             "--input-path",
             input_path,
-            "--column-name",
-            column_name,
             "--output-path",
             output_path,
         ],

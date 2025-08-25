@@ -6,7 +6,7 @@ from guadalupe_weather.get_outliers import (
     get_tukey_fences_for_min_variables,
     get_tukey_fences_for_rain,
     _remove_outliers_for_column,
-    remove_outliers,
+    _remove_outliers,
     TukeyMethodSelector,
 )
 import pandas as pd
@@ -60,7 +60,7 @@ def tests_remove_outliers_for_column():
 
 def tests_remove_outliers():
     data = pd.read_csv("tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv")
-    obtained = remove_outliers(data)
+    obtained = _remove_outliers(data)
     assert obtained.Rain.isna().sum() == 1
 
 
