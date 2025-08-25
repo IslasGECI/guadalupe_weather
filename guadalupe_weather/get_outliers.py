@@ -6,20 +6,10 @@ from typing import Any
 
 def remove_outliers(data):
     data_copy = data.copy()
-    method_by_variable = {
-        "Rain": get_tukey_fences_for_rain,
-        "Rain_Rate": get_tukey_fences_for_rain,
-        "Dew_Pt": get_tukey_fences_for_min_variables,
-        "Heat_D_D": get_tukey_fences_for_max_variables,
-        "Hi_Speed": get_tukey_fences_for_max_and_min_variables,
-        "Wind_Chill": get_tukey_fences_for_max_and_min_variables,
-        "Heat_Index": get_tukey_fences_for_max_and_min_variables,
-        "Temp_Out": get_tukey_fences_for_max_and_min_variables,
-        "Hi_Temp": get_tukey_fences_for_max_and_min_variables,
-        "Low_Temp": get_tukey_fences_for_max_and_min_variables,
-    }
-    for column in method_by_variable.keys():
-        method = method_by_variable[column]
+    tukey_selector = TukeyMethodSelector()
+
+    for column in tukey_selector.variables.keys():
+        method = tukey_selector.select_method(column)
         linf, lsup = method(data, column)
         outliers = get_outliers(data_copy[column], linf, lsup)
         data_copy[column] = data_copy[column].replace(outliers, np.nan)
