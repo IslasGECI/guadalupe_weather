@@ -41,6 +41,7 @@ def remove_outliers_for_column(data, column_name):
     tukey_selector = TukeyMethodSelector()
     method = tukey_selector.select_method(column_name)
     linf, lsup = method(data_copy, column_name)
+    print(f"{column_name} limits: (Inferior: {linf:.2f}, Superior: {lsup:.2f})")
     outliers = get_outliers(column_data, linf, lsup)
     data_copy[column_name] = column_data.replace(outliers, np.nan)
     return data_copy
@@ -91,5 +92,4 @@ def get_tukey_limits(Variable):
     IQR = Q3 - Q1
     linf = Q1 - 1.5 * IQR
     lsup = Q3 + 1.5 * IQR
-    print(f"{Variable} limits: (Inferior: {linf:.2f}, Superior: {lsup:.2f})")
     return linf, lsup
