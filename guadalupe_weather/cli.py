@@ -2,11 +2,22 @@ import typer
 from typing_extensions import Annotated
 import pandas as pd
 from guadalupe_weather.get_outliers import (
+    _remove_outliers,
     _remove_outliers_for_column,
 )
 import guadalupe_weather as gw
 
 cli = typer.Typer()
+
+
+@cli.command()
+def remove_outliers(
+    input_path: Annotated[str, typer.Option()],
+    output_path: Annotated[str, typer.Option()],
+):
+    data = pd.read_csv(input_path)
+    no_outliers_df = _remove_outliers(data)
+    no_outliers_df.to_csv(output_path, index=False)
 
 
 @cli.command()

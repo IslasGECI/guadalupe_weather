@@ -4,13 +4,14 @@ import numpy as np
 from typing import Any
 
 
-def remove_outliers(data):
+def _remove_outliers(data):
     data_copy = data.copy()
     tukey_selector = TukeyMethodSelector()
 
     for column in tukey_selector.variables.keys():
         method = tukey_selector.select_method(column)
         linf, lsup = method(data, column)
+        print(f"{column} limits: (Inferior: {linf:.2f}, Superior: {lsup:.2f})")
         outliers = get_outliers(data_copy[column], linf, lsup)
         data_copy[column] = data_copy[column].replace(outliers, np.nan)
     return data_copy
