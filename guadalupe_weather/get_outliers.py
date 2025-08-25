@@ -18,9 +18,23 @@ def get_tukey_fences_by_daily_means_for_variables_of_interest(data, list_of_vari
 
 
 def get_tukey_fences_by_variable(data, variable):
+    method_by_variable = {
+        "Rain": get_tukey_fences_for_rain,
+        "Dew_Pt": get_tukey_fences_for_max_and_min_variables,
+    }
+    inferior, superior = method_by_variable[variable](data, variable)
+    return inferior, superior
+
+
+def get_tukey_fences_for_rain(data, variable):
     remove_zeros = data[data[variable] != 0]
-    inferior, superior = get_tukey_fences_by_daily_means(remove_zeros, variable)
+    _, superior = get_tukey_fences_by_daily_means(remove_zeros, variable)
     return 0, superior
+
+
+def get_tukey_fences_for_max_and_min_variables(data, variable):
+    _, max_superior, min_inferior, _ = get_tukey_fences_by_daily_max_and_min(data, variable)
+    return min_inferior, max_superior
 
 
 def get_tukey_fences_by_daily_max_and_min(data, column_name):
