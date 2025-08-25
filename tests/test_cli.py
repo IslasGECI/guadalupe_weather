@@ -15,7 +15,7 @@ def test_remove_outliers():
     result = runner.invoke(
         cli,
         [
-            "remove-outliers",
+            "remove-outliers-for-column",
             "--input-path",
             input_path,
             "--column-name",

@@ -35,7 +35,7 @@ class TukeyMethodSelector:
         return self.variables[variable]
 
 
-def remove_outliers_for_column(data, column_name):
+def _remove_outliers_for_column(data, column_name):
     data_copy = data.copy()
     column_data = data[column_name]
     tukey_selector = TukeyMethodSelector()

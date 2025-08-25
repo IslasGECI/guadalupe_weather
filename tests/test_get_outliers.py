@@ -5,7 +5,7 @@ from guadalupe_weather.get_outliers import (
     get_tukey_fences_for_max_variables,
     get_tukey_fences_for_min_variables,
     get_tukey_fences_for_rain,
-    remove_outliers_for_column,
+    _remove_outliers_for_column,
     remove_outliers,
     TukeyMethodSelector,
 )
@@ -47,7 +47,7 @@ def test_get_outliers():
 
 def tests_remove_outliers_for_column():
     column_name = "Rain"
-    obtained = remove_outliers_for_column(data, column_name)
+    obtained = _remove_outliers_for_column(data, column_name)
 
     assert obtained.shape == data.shape
     assert np.isnan(obtained[column_name].iloc[-5])
@@ -55,7 +55,7 @@ def tests_remove_outliers_for_column():
 
     column_name = "Variable2"
     with pytest.raises(KeyError):
-        remove_outliers_for_column(data, column_name)
+        _remove_outliers_for_column(data, column_name)
 
 
 def tests_remove_outliers():
