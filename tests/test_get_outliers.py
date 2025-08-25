@@ -62,6 +62,10 @@ def test_get_tukey_fences_by_daily_max_and_min():
     obtained_max_inferior, obtained_max_superior, obtained_min_inferior, obtained_min_superior = (
         get_tukey_fences_by_daily_max_and_min(data, column_name)
     )
+    assert obtained_max_inferior == -20.5
+    assert obtained_max_superior == 73.5
+    assert obtained_min_inferior == 0.5
+    assert obtained_min_superior == 2.5
 
 
 def test_get_tukey_fences_by_variable():
