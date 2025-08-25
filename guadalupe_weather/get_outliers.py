@@ -4,6 +4,27 @@ import numpy as np
 from typing import Any
 
 
+def remove_outliers(data):
+    data_copy = data.copy()
+    variables = [
+        "Rain",
+        "Rain_Rate",
+        "Dew_Pt",
+        "Heat_D_D",
+        "Hi_Speed",
+        "Wind_Chill",
+        "Heat_Index",
+        "Temp_Out",
+        "Hi_Temp",
+        "Low_Temp",
+    ]
+    for column in variables:
+        linf, lsup = get_tukey_fences_by_variable(data_copy, column)
+        outliers = get_outliers(data_copy[column], linf, lsup)
+        data_copy[column] = data_copy[column].replace(outliers, np.nan)
+    return data_copy
+
+
 def remove_outliers_for_column(data, column_name):
     data_copy = data.copy()
     column_data = data[column_name]
