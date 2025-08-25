@@ -8,7 +8,6 @@ from guadalupe_weather.get_outliers import (
     get_tukey_fences_for_rain,
     remove_outliers_for_column,
     remove_outliers,
-    select_tukey_method_by_variable,
     TukeyMethodSelector,
 )
 import pandas as pd
@@ -107,7 +106,7 @@ def test_get_tukey_fences_by_variable():
     assert obtained_superior == 87.5
 
 
-def test_select_tukey_method_by_variable():
+def test_TukeyMethodSelector():
     tukey_selector = TukeyMethodSelector()
 
     obtained_variables = list(tukey_selector.variables.keys())

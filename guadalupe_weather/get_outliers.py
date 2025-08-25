@@ -48,22 +48,6 @@ def get_tukey_fences_by_daily_means_for_variables_of_interest(data, list_of_vari
     return [get_tukey_fences_by_daily_means(data, variable) for variable in list_of_variables]
 
 
-def select_tukey_method_by_variable(variable):
-    method_by_variable = {
-        "Rain": get_tukey_fences_for_rain,
-        "Rain_Rate": get_tukey_fences_for_rain,
-        "Dew_Pt": get_tukey_fences_for_min_variables,
-        "Heat_D_D": get_tukey_fences_for_max_variables,
-        "Hi_Speed": get_tukey_fences_for_max_and_min_variables,
-        "Wind_Chill": get_tukey_fences_for_max_and_min_variables,
-        "Heat_Index": get_tukey_fences_for_max_and_min_variables,
-        "Temp_Out": get_tukey_fences_for_max_and_min_variables,
-        "Hi_Temp": get_tukey_fences_for_max_and_min_variables,
-        "Low_Temp": get_tukey_fences_for_max_and_min_variables,
-    }
-    return method_by_variable[variable]
-
-
 def get_tukey_fences_for_rain(data, variable):
     remove_zeros = data[data[variable] != 0]
     _, superior = get_tukey_fences_by_daily_means(remove_zeros, variable)
