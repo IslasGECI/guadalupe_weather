@@ -38,7 +38,9 @@ class TukeyMethodSelector:
 def remove_outliers_for_column(data, column_name):
     data_copy = data.copy()
     column_data = data[column_name]
-    linf, lsup = get_tukey_fences_by_daily_means(data_copy, column_name)
+    tukey_selector = TukeyMethodSelector()
+    method = tukey_selector.select_method(column_name)
+    linf, lsup = method(data_copy, column_name)
     outliers = get_outliers(column_data, linf, lsup)
     data_copy[column_name] = column_data.replace(outliers, np.nan)
     return data_copy

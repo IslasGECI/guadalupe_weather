@@ -32,7 +32,7 @@ data = pd.DataFrame(
             "01/Oct/2008",
             "01/Oct/2008",
         ],
-        "Variable": [2, 3, 5, 7, 9, 11, 14, 18, 22, outlier, np.nan, 1, 2, 3],
+        "Rain": [2, 3, 5, 7, 9, 11, 14, 18, 22, outlier, np.nan, 1, 2, 3],
         "Variable2": [np.nan, 2, 3, 5, 7, 9, 11, 14, 18, outlier, 22, 1, 2, 3],
     }
 )
@@ -41,17 +41,21 @@ data = pd.DataFrame(
 def test_get_outliers():
     superior_limit = 25
     inferior_limit = 0
-    obtained = get_outliers(data.Variable, inferior_limit, superior_limit)
+    obtained = get_outliers(data.Rain, inferior_limit, superior_limit)
     assert obtained == [outlier]
 
 
 def tests_remove_outliers_for_column():
-    column_name = "Variable"
+    column_name = "Rain"
     obtained = remove_outliers_for_column(data, column_name)
 
     assert obtained.shape == data.shape
     assert np.isnan(obtained[column_name].iloc[-5])
     assert np.isnan(obtained[column_name].iloc[-6])
+
+    column_name = "Variable2"
+    with pytest.raises(KeyError):
+        remove_outliers_for_column(data, column_name)
 
 
 def tests_remove_outliers():
@@ -61,7 +65,7 @@ def tests_remove_outliers():
 
 
 def test_get_tukey_fences_by_daily_max_and_min():
-    column_name = "Variable"
+    column_name = "Rain"
     obtained_max_inferior, obtained_max_superior, obtained_min_inferior, obtained_min_superior = (
         get_tukey_fences_by_daily_max_and_min(data, column_name)
     )
@@ -72,7 +76,26 @@ def test_get_tukey_fences_by_daily_max_and_min():
 
 
 def test_get_tukey_fences_by_variable():
-    data = pd.read_csv("tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv")
+    data = pd.DataFrame(
+        {
+            "Date": [
+                "30/Sep/2008",
+                "01/Oct/2008",
+                "30/Sep/2008",
+                "01/Oct/2008",
+                "30/Sep/2008",
+                "01/Oct/2008",
+                "30/Sep/2008",
+                "01/Oct/2008",
+                "30/Sep/2008",
+                "01/Oct/2008",
+            ],
+            "Rain": [0, 0, 0, 2, 0, 0, 0, 0, 3, 599],
+            "Dew_Pt": [17.1, 17.1, 17.1, 17.1, 17.1, 17.1, 17, 17, 17.1, 3.7],
+            "Hi_Speed": [27.4, 27.4, 20.9, 20.9, 22.5, 22.5, 22.5, 22.5, 22.5, 40.8],
+            "Heat_D_D": [0, 0, 0, 0, 0, 0, 0, 0, 5, 60],
+        }
+    )
 
     variable = "Rain"
     obtained_inferior, obtained_superior = get_tukey_fences_for_rain(data, variable)

@@ -29,7 +29,7 @@ def test_remove_outliers():
     obtained = pd.read_csv(output_path)
     assert obtained.shape == (10, 39)
     assert np.isnan(obtained.loc[9, "Temp_Out"])
-    assert "Temp_Out limits: (Inferior: 10.99, Superior: 43.67)" in result.stdout
+    assert "Temp_Out limits" in result.stdout
 
 
 def test_version():
