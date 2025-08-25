@@ -110,6 +110,21 @@ def test_get_tukey_fences_by_variable():
 def test_select_tukey_method_by_variable():
     tukey_selector = TukeyMethodSelector()
 
+    obtained_variables = list(tukey_selector.variables.keys())
+    expected_variables = [
+        "Rain",
+        "Rain_Rate",
+        "Dew_Pt",
+        "Heat_D_D",
+        "Hi_Speed",
+        "Wind_Chill",
+        "Heat_Index",
+        "Temp_Out",
+        "Hi_Temp",
+        "Low_Temp",
+    ]
+    assert obtained_variables == expected_variables
+
     variable = "Rain_Rate"
     obtained_method = tukey_selector.select_method(variable)
     assert obtained_method == get_tukey_fences_for_rain
