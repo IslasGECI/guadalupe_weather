@@ -21,6 +21,7 @@ def get_tukey_fences_by_variable(data, variable):
     method_by_variable = {
         "Rain": get_tukey_fences_for_rain,
         "Dew_Pt": get_tukey_fences_for_max_and_min_variables,
+        "Hi_Speed": get_tukey_fences_for_max_and_min_variables,
     }
     inferior, superior = method_by_variable[variable](data, variable)
     return inferior, superior
