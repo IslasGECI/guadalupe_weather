@@ -91,4 +91,5 @@ def get_tukey_limits(Variable):
     IQR = Q3 - Q1
     linf = Q1 - 1.5 * IQR
     lsup = Q3 + 1.5 * IQR
+    print(f"{Variable} limits: (Inferior: {linf:.2f}, Superior: {lsup:.2f})")
     return linf, lsup
