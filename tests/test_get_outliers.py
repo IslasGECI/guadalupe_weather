@@ -4,6 +4,7 @@ from guadalupe_weather.get_outliers import (
     get_tukey_fences_by_daily_means_for_variables_of_interest,
     get_tukey_fences_by_daily_max_and_min,
     get_tukey_fences_by_variable,
+    get_tukey_fences_for_max_and_min_variables,
     get_tukey_fences_for_rain,
     select_tukey_method_by_variable,
 )
