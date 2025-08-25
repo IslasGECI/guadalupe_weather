@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.3.0] - 2025-08-25
+### Added
+- The CLI command `remove-outliers-for-column` has the same behaviour as the previous `remove-outliers`.
+### Changed
+- The CLI command `remove-outliers` now removes outliers for columns of interest.
+
 ## [0.2.2] - 2025-08-21
 
 ### Fixed
