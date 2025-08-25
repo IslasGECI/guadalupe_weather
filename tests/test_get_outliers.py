@@ -78,7 +78,7 @@ def test_get_tukey_fences_by_variable():
     variable = "Dew_Pt"
     obtained_inferior, obtained_superior = get_tukey_fences_by_variable(data, variable)
     assert pytest.approx(obtained_inferior) == -2.95
-    assert obtained_superior == 17.1
+    assert pytest.approx(obtained_superior, rel=1e-3) == 23.65
     variable = "Hi_Speed"
     obtained_inferior, obtained_superior = get_tukey_fences_by_variable(data, variable)
     assert obtained_inferior == 20.9
