@@ -39,12 +39,6 @@ def get_tukey_fences_by_daily_means_for_variables_of_interest(data, list_of_vari
     return [get_tukey_fences_by_daily_means(data, variable) for variable in list_of_variables]
 
 
-def get_tukey_fences_by_variable(data, variable):
-    method = select_tukey_method_by_variable(variable)
-    inferior, superior = method(data, variable)
-    return inferior, superior
-
-
 def select_tukey_method_by_variable(variable):
     method_by_variable = {
         "Rain": get_tukey_fences_for_rain,
