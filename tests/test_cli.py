@@ -55,5 +55,5 @@ def test_remove_outliers_for_column():
 
 def test_version():
     result = runner.invoke(cli, ["version"])
-    expected_version = "0.3.0"
+    expected_version = "0.3.1"
     assert expected_version in result.stdout

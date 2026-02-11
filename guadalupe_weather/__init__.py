@@ -1,6 +1,6 @@
 """Paquete analisis de clima en Isla Guadalupe"""
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 from .get_outliers import (  # noqa
     _remove_outliers,
     _remove_outliers_for_column,
