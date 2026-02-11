@@ -10,10 +10,11 @@ description-file = "README.md"
 home-page = "https://bitbucket.org/IslasGECI/clima_guadalupe/"
 module = "guadalupe_weather"
 requires = [
-	"geci_plots",
+	"geci-plots",
 	"matplotlib",
 	"pandas",
 	"typer[all]",
+	"typing-extensions",
 ]
 requires-python=">=3.9"
 
