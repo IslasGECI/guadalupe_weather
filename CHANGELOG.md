@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.3.1] - 2026-02-11
+### Fixed
+- Install missing requirement of `typing-extensions`.
+
 ## [0.3.0] - 2025-08-25
 ### Added
 - The CLI command `remove-outliers-for-column` has the same behaviour as the previous `remove-outliers`.
