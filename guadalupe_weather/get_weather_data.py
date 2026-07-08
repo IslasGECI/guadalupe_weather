@@ -46,7 +46,11 @@ def get_monthly_average_temperature_by_zone(data_by_year):
 
 def get_box_plot_data(monthly_average_rain_path):
     all_data = pd.read_csv(monthly_average_rain_path)
-    data_grouped_by_month = all_data.groupby(["Month"])
+    return xxget_box_plot_data(all_data)
+
+
+def xxget_box_plot_data(monthly_data):
+    data_grouped_by_month = monthly_data.groupby(["Month"])
     box_plot_data = [
         month_data[1]["Cumulative_rain"].to_numpy() for month_data in data_grouped_by_month
     ]
