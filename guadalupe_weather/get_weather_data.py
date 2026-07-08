@@ -53,15 +53,12 @@ def get_box_plot_data(monthly_data):
 def compute_monthly_boxplot_data_by_variable(monthly_data, variable):
     data_grouped_by_month = monthly_data.groupby(["Month"])
     box_plot_data = [month_data[1][variable].to_numpy() for month_data in data_grouped_by_month]
-
     return box_plot_data
 
 
 def get_box_plot_data_temperature(monthly_average_rain_path):
     all_data = pd.read_csv(monthly_average_rain_path)
-    data_grouped_by_month = all_data.groupby(["Month"])
-    box_plot_data = [
-        month_data[1]["Avg_Temp_Out"].to_numpy() for month_data in data_grouped_by_month
-    ]
-    box_plot_data = [month[~np.isnan(month)] for month in box_plot_data]
-    return box_plot_data
+    variable = "Avg_Temp_Out"
+    box_plot_data = compute_monthly_boxplot_data_by_variable(all_data, variable)
+    box_plot_data_without_nan = [month[~np.isnan(month)] for month in box_plot_data]
+    return box_plot_data_without_nan
