@@ -7,6 +7,7 @@ import numpy as np
 from guadalupe_weather.get_weather_data import (
     get_box_plot_data_temperature,
     get_box_plot_data,
+    xxget_box_plot_data,
     get_data_by_year,
     get_monthly_and_annual_average_cumulative_rain_by_zone,
     get_monthly_average_cumulative_rain_by_zone,
@@ -100,7 +101,8 @@ def test_get_y_max_limit():
 
 def test_get_box_plot_data():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
-    obtained_box_plot_data = get_box_plot_data(monthly_average_rain_path)
+    monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
+    obtained_box_plot_data = xxget_box_plot_data(monthly_average_rain_df)
     obtained_january_box_plot_data = obtained_box_plot_data[0]
     expected_january_box_plot_data = np.array([30.8, 0.0, 10.4, 0.0])
     assert (obtained_january_box_plot_data == expected_january_box_plot_data).all()
