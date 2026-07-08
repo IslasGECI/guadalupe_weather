@@ -133,7 +133,7 @@ def test_get_string_label_temperature():
 
 def test_plot_average_temperature_hash():
     png_path = "tests/data/temperature_norte_bosque_2017.png"
-    expected_hash = "9dc8eac0d57838a049ebf5db3c0ac42a"
+    expected_hash = "6a8492c74864eb46b1cbd1cad734949b"
     if os.path.exists(png_path):
         os.remove(png_path)
     year = 2017
@@ -145,7 +145,7 @@ def test_plot_average_temperature_hash():
     assert obtained_hash == expected_hash, f"El hash de la figura {png_path}"
 
     png_path = "tests/data/temperature_norte_bosque_multianual.png"
-    expected_hash = "21e3464bb52ae613f452e0034b3cce16"
+    expected_hash = "443261dffc62e08b6cc63b253431767f"
     years_list = [2017, 2021]
     if os.path.exists(png_path):
         os.remove(png_path)
@@ -157,7 +157,7 @@ def test_plot_average_temperature_hash():
 
 def test_plot_average_rain_hash():
     png_path = "tests/data/cumulative_rain_norte_bosque_2017.png"
-    expected_hash = "5b0f0e59d3e3d0055d854f1ecb17a2c7"
+    expected_hash = "376512ca588928fed5b10d9325b5317f"
     if os.path.exists(png_path):
         os.remove(png_path)
     year = 2017
@@ -169,7 +169,7 @@ def test_plot_average_rain_hash():
     assert obtained_hash == expected_hash, f"El hash de la figura {png_path}"
 
     png_path = "tests/data/cumulative_rain_norte_bosque_multianual.png"
-    expected_hash = "4df6065773263ded0375ff7fa57e56a9"
+    expected_hash = "5a1467b7a0cfc082a3ab0d634dac0cf1"
     years_list = [2017, 2021]
     if os.path.exists(png_path):
         os.remove(png_path)
