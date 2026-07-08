@@ -10,6 +10,15 @@ def plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year_list):
     y_label = "Monthly rainfall (mm/month)"
     y_lim_max = 50
     box_label = "Rain typical year"
+    plot_average_and_boxplot_by_variable(
+        data_to_plot, box_plot_data, string_label, y_label, y_lim_max, box_label
+    )
+    plt.savefig(png_path, dpi=300)
+
+
+def plot_average_and_boxplot_by_variable(
+    data_to_plot, box_plot_data, string_label, y_label, y_lim_max, box_label
+):
     fontsize = 20
     ticks_positions = np.linspace(1, 12, 12)
     months_labels = get_months_labels_list()
@@ -35,7 +44,6 @@ def plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year_list):
     handles, labels = ax.get_legend_handles_labels()
     plt.legend([*handles, box_plot["boxes"].pop()], [*labels, box_label], fontsize=fontsize)
     plt.tight_layout()
-    plt.savefig(png_path, dpi=300)
 
 
 def plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year_list):
