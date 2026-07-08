@@ -7,7 +7,7 @@ import pandas as pd
 from geci_plots import geci_plot
 
 
-def xxplot_average_rain_by_zone(data_to_plot, monthly_average_data_path, png_path, year_list):
+def plot_average_rain_by_zone(data_to_plot, monthly_average_data_path, png_path, year_list):
     box_plot_data = get_box_plot_data(monthly_average_data_path)
     fontsize = 20
     ticks_positions = np.linspace(1, 12, 12)
