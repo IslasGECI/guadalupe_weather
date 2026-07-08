@@ -6,7 +6,7 @@ import numpy as np
 
 from guadalupe_weather.get_weather_data import (
     get_box_plot_data_temperature,
-    xxget_box_plot_data,
+    get_box_plot_data,
     get_data_by_year,
     get_monthly_and_annual_average_cumulative_rain_by_zone,
     get_monthly_average_cumulative_rain_by_zone,
@@ -93,7 +93,7 @@ def test_get_monthly_and_annual_average_cumulative_rain_by_zone():
 def test_get_y_max_limit():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
-    box_plot_data = xxget_box_plot_data(monthly_average_rain_df)
+    box_plot_data = get_box_plot_data(monthly_average_rain_df)
     obtained_limit = get_y_max_limit(box_plot_data)
     expected_limit = 50
     assert obtained_limit == expected_limit
@@ -102,7 +102,7 @@ def test_get_y_max_limit():
 def test_get_box_plot_data():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
-    obtained_box_plot_data = xxget_box_plot_data(monthly_average_rain_df)
+    obtained_box_plot_data = get_box_plot_data(monthly_average_rain_df)
     obtained_january_box_plot_data = obtained_box_plot_data[0]
     expected_january_box_plot_data = np.array([30.8, 0.0, 10.4, 0.0])
     assert (obtained_january_box_plot_data == expected_january_box_plot_data).all()
@@ -166,7 +166,7 @@ def test_plot_average_rain_hash():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     data_to_plot = get_monthly_cumulative_rain_by_year(monthly_average_rain_path, year)
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
-    box_plot_data = xxget_box_plot_data(monthly_average_rain_df)
+    box_plot_data = get_box_plot_data(monthly_average_rain_df)
     plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year)
     obtained_hash = _get_hash_from_file(png_path)
     assert obtained_hash == expected_hash, f"El hash de la figura {png_path}"

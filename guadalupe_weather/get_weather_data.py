@@ -44,7 +44,7 @@ def get_monthly_average_temperature_by_zone(data_by_year):
     return data_by_year.groupby(["Month"])["Avg_Temp_Out"].mean()
 
 
-def xxget_box_plot_data(monthly_data):
+def get_box_plot_data(monthly_data):
     data_grouped_by_month = monthly_data.groupby(["Month"])
     box_plot_data = [
         month_data[1]["Cumulative_rain"].to_numpy() for month_data in data_grouped_by_month
