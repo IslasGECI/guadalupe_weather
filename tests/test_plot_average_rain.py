@@ -166,7 +166,8 @@ def test_plot_average_rain_hash():
     year = 2017
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     data_to_plot = get_monthly_cumulative_rain_by_year(monthly_average_rain_path, year)
-    box_plot_data = get_box_plot_data(monthly_average_rain_path)
+    monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
+    box_plot_data = xxget_box_plot_data(monthly_average_rain_df)
     plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year)
     obtained_hash = _get_hash_from_file(png_path)
     assert obtained_hash == expected_hash, f"El hash de la figura {png_path}"
