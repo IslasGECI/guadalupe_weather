@@ -1,4 +1,3 @@
-from guadalupe_weather.get_weather_data import get_box_plot_data
 import calendar
 import numpy as np
 import matplotlib.pyplot as plt

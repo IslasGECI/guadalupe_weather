@@ -44,11 +44,6 @@ def get_monthly_average_temperature_by_zone(data_by_year):
     return data_by_year.groupby(["Month"])["Avg_Temp_Out"].mean()
 
 
-def get_box_plot_data(monthly_average_rain_path):
-    all_data = pd.read_csv(monthly_average_rain_path)
-    return xxget_box_plot_data(all_data)
-
-
 def xxget_box_plot_data(monthly_data):
     data_grouped_by_month = monthly_data.groupby(["Month"])
     box_plot_data = [

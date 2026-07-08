@@ -6,7 +6,6 @@ import numpy as np
 
 from guadalupe_weather.get_weather_data import (
     get_box_plot_data_temperature,
-    get_box_plot_data,
     xxget_box_plot_data,
     get_data_by_year,
     get_monthly_and_annual_average_cumulative_rain_by_zone,
