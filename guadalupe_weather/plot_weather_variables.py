@@ -6,12 +6,15 @@ from geci_plots import geci_plot
 
 
 def plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year_list):
+    string_label = get_string_label(year_list)
+    y_label = "Monthly rainfall (mm/month)"
+    y_lim_max = 50
+    box_label = "Rain typical year"
     fontsize = 20
     ticks_positions = np.linspace(1, 12, 12)
     months_labels = get_months_labels_list()
     fig, ax = geci_plot()
     box_plot = ax.boxplot(box_plot_data, patch_artist=True, boxprops=dict(facecolor="white"))
-    string_label = get_string_label(year_list)
     ax.plot(
         data_to_plot.index,
         data_to_plot.values,
@@ -23,28 +26,28 @@ def plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year_list):
     )
     plt.xticks([*ticks_positions, 13], [*months_labels, ""], size=fontsize, rotation=90)
     plt.yticks(size=fontsize)
-    plt.ylabel("Monthly rainfall (mm/month)", size=fontsize)
+    plt.ylabel(y_label, size=fontsize)
     y_lim_min = -0.1
-    y_lim_max = get_y_max_limit(box_plot_data)
     ax.set_ylim(
         y_lim_min,
         y_lim_max,
     )
     handles, labels = ax.get_legend_handles_labels()
-    plt.legend(
-        [*handles, box_plot["boxes"].pop()], [*labels, "Rain typical year"], fontsize=fontsize
-    )
+    plt.legend([*handles, box_plot["boxes"].pop()], [*labels, box_label], fontsize=fontsize)
     plt.tight_layout()
     plt.savefig(png_path, dpi=300)
 
 
 def plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year_list):
+    string_label = get_string_label_temperature(year_list)
+    y_label = r"Temperature ($^{\circ}C$)"
+    box_label = "Temperature typical year"
+    y_lim_max = 30
     fontsize = 20
     ticks_positions = np.linspace(1, 12, 12)
     months_labels = get_months_labels_list()
     fig, ax = geci_plot()
     box_plot = ax.boxplot(box_plot_data, patch_artist=True, boxprops=dict(facecolor="white"))
-    string_label = get_string_label_temperature(year_list)
     ax.plot(
         data_to_plot.index,
         data_to_plot.values,
@@ -56,9 +59,8 @@ def plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year
     )
     plt.xticks([*ticks_positions, 13], [*months_labels, ""], size=fontsize, rotation=90)
     plt.yticks(size=fontsize)
-    plt.ylabel(r"Temperature ($^{\circ}C$)", size=fontsize)
+    plt.ylabel(y_label, size=fontsize)
     y_lim_min = -0.1
-    y_lim_max = 30
     ax.set_ylim(
         y_lim_min,
         y_lim_max,
@@ -66,7 +68,7 @@ def plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year
     handles, labels = ax.get_legend_handles_labels()
     plt.legend(
         [*handles, box_plot["boxes"].pop()],
-        [*labels, "Temperature typical year"],
+        [*labels, box_label],
         fontsize=fontsize,
     )
     plt.tight_layout()
