@@ -2,13 +2,11 @@ from guadalupe_weather.get_weather_data import get_box_plot_data
 import calendar
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
 
 from geci_plots import geci_plot
 
 
-def plot_average_rain_by_zone(data_to_plot, monthly_average_data_path, png_path, year_list):
-    box_plot_data = get_box_plot_data(monthly_average_data_path)
+def plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year_list):
     fontsize = 20
     ticks_positions = np.linspace(1, 12, 12)
     months_labels = get_months_labels_list()
