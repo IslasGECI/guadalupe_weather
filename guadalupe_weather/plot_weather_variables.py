@@ -9,10 +9,6 @@ from geci_plots import geci_plot
 
 def xxplot_average_rain_by_zone(data_to_plot, monthly_average_data_path, png_path, year_list):
     box_plot_data = get_box_plot_data(monthly_average_data_path)
-    plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year_list)
-
-
-def plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year_list):
     fontsize = 20
     ticks_positions = np.linspace(1, 12, 12)
     months_labels = get_months_labels_list()
