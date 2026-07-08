@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np
 
 from guadalupe_weather.get_weather_data import (
-    xxget_box_plot_data_temperature,
+    get_box_plot_data_temperature,
     get_box_plot_data,
     get_data_by_year,
     get_monthly_and_annual_average_cumulative_rain_by_zone,
@@ -142,7 +142,7 @@ def test_plot_average_temperature_hash():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     data_to_plot = get_monthly_temperature_by_year(monthly_average_rain_path, year)
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
-    box_plot_data = xxget_box_plot_data_temperature(monthly_average_rain_df)
+    box_plot_data = get_box_plot_data_temperature(monthly_average_rain_df)
     plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year)
     obtained_hash = _get_hash_from_file(png_path)
     assert obtained_hash == expected_hash, f"El hash de la figura {png_path}"
