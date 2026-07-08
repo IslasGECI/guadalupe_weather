@@ -20,7 +20,6 @@ from guadalupe_weather.plot_weather_variables import (
     get_string_label_temperature,
     get_string_label,
     get_y_max_limit,
-    plot_average_rain_by_zone,
     xxplot_average_rain_by_zone,
     plot_average_temperature_by_zone,
 )
@@ -164,8 +163,7 @@ def test_plot_average_rain_hash():
     year = 2017
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     data_to_plot = get_monthly_cumulative_rain_by_year(monthly_average_rain_path, year)
-    box_plot_data = get_box_plot_data(monthly_average_rain_path)
-    plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year)
+    xxplot_average_rain_by_zone(data_to_plot, monthly_average_rain_path, png_path, year)
     obtained_hash = _get_hash_from_file(png_path)
     assert obtained_hash == expected_hash, f"El hash de la figura {png_path}"
 
