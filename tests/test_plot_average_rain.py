@@ -93,7 +93,8 @@ def test_get_monthly_and_annual_average_cumulative_rain_by_zone():
 
 def test_get_y_max_limit():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
-    box_plot_data = get_box_plot_data(monthly_average_rain_path)
+    monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
+    box_plot_data = xxget_box_plot_data(monthly_average_rain_df)
     obtained_limit = get_y_max_limit(box_plot_data)
     expected_limit = 50
     assert obtained_limit == expected_limit
