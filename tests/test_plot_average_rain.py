@@ -4,7 +4,7 @@ from guadalupe_weather.get_weather_data import (
     get_data_by_year,
     get_monthly_and_annual_average_cumulative_rain_by_zone,
     get_monthly_average_cumulative_rain_by_zone,
-    get_monthly_temperature_by_year,
+    xxget_monthly_temperature_by_year,
     get_multiannual_monthly_cumulative_rain,
 )
 
@@ -123,8 +123,8 @@ def test_plot_average_temperature_hash():
         os.remove(png_path)
     year = 2017
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
-    data_to_plot = get_monthly_temperature_by_year(monthly_average_rain_path, year)
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
+    data_to_plot = xxget_monthly_temperature_by_year(monthly_average_rain_df, year)
     box_plot_data = get_box_plot_data_temperature(monthly_average_rain_df)
     plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year)
     obtained_hash = _get_hash_from_file(png_path)
