@@ -1,11 +1,8 @@
 from guadalupe_weather.plot_weather_variables import (
     format_axis_elements,
-    get_string_label_temperature,
-    get_string_label_rain,
 )
 
 from geci_plots import geci_plot
-import numpy as np
 import matplotlib.pyplot as plt
 
 
