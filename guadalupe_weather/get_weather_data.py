@@ -11,7 +11,8 @@ def get_multiannual_monthly_cumulative_rain(all_data_path, years_list):
 
 
 def get_multiannual_monthly_temperature(all_data_path, years_list):
-    multiannual_data = [get_monthly_temperature_by_year(all_data_path, year) for year in years_list]
+    all_data_df = pd.read_csv(all_data_path)
+    multiannual_data = [xxget_monthly_temperature_by_year(all_data_df, year) for year in years_list]
     multiannual_average = pd.concat(multiannual_data, axis=1).agg("mean", 1)
     return multiannual_average.sort_index()
 
