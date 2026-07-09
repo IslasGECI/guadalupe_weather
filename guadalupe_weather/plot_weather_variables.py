@@ -34,8 +34,6 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
     }
     config = config_by_variable[variable]
     fontsize = 20
-    ticks_positions = np.linspace(1, 12, 12)
-    months_labels = get_months_labels_list()
     fig, ax = geci_plot()
     box_plot = ax.boxplot(box_plot_data, patch_artist=True, boxprops=dict(facecolor="white"))
     ax.plot(
@@ -47,6 +45,17 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
         markersize=5,
         label=config["string_label"](year_list),
     )
+    handles, labels = ax.get_legend_handles_labels()
+    plt.legend(
+        [*handles, box_plot["boxes"].pop()], [*labels, config["box_label"]], fontsize=fontsize
+    )
+    format_axis_elements(config, fontsize, ax)
+    return ax
+
+
+def format_axis_elements(config, fontsize, ax):
+    ticks_positions = np.linspace(1, 12, 12)
+    months_labels = get_months_labels_list()
     plt.xticks([*ticks_positions, 13], [*months_labels, ""], size=fontsize, rotation=90)
     plt.yticks(size=fontsize)
     plt.ylabel(config["y_label"], size=fontsize)
@@ -55,12 +64,7 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
         y_lim_min,
         config["y_lim_max"],
     )
-    handles, labels = ax.get_legend_handles_labels()
-    plt.legend(
-        [*handles, box_plot["boxes"].pop()], [*labels, config["box_label"]], fontsize=fontsize
-    )
     plt.tight_layout()
-    return ax
 
 
 def get_string_label_temperature(years):
