@@ -22,7 +22,8 @@ def get_monthly_cumulative_rain_by_year(monthly_average_rain_path, year):
 
 
 def get_monthly_temperature_by_year(monthly_average_rain_path, year):
-    data_by_year = get_data_by_year(monthly_average_rain_path, year)
+    monthly_average_rain = pd.read_csv(monthly_average_rain_path)
+    data_by_year = xxget_data_by_year(monthly_average_rain, year)
     return get_monthly_average_temperature_by_zone(data_by_year)
 
 
