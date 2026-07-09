@@ -178,8 +178,8 @@ def test_get_multiannual_monthly_cumulative_rain():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     years = [2017, 2021]
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
-    obtained_multianual_monthly_cumulative_rain = get_multiannual_monthly_cumulative_rain(
-        monthly_average_rain_path, years
+    obtained_multianual_monthly_cumulative_rain = xxget_multiannual_monthly_cumulative_rain(
+        monthly_average_rain_df, years
     )
     obtained_january_cumulative_rain = obtained_multianual_monthly_cumulative_rain.iloc[0]
     expected_january_cumulative_rain = 10.3
