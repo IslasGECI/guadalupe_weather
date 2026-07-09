@@ -9,7 +9,6 @@ import pytest
 runner = CliRunner()
 
 
-@pytest.mark.skip("not yet")
 def test_render_rain_across_year():
     output_path = "tests/data/cumulative_rain_norte_bosque_2017.png"
     expected_hash = "376512ca588928fed5b10d9325b5317f"
