@@ -78,5 +78,6 @@ def get_string_label_for_variable(variable, years):
         return f"{variable} in {*years, }"
     return f"{variable} in {years[0]}"
 
+
 def get_months_labels_list() -> list:
     return list(calendar.month_name[1:])

@@ -4,7 +4,6 @@ from guadalupe_weather.get_weather_data import (
     get_data_by_year,
     get_monthly_and_annual_average_cumulative_rain_by_zone,
     get_monthly_average_cumulative_rain_by_zone,
-    get_monthly_temperature_by_year,
     get_multiannual_monthly_temperature,
     get_multiannual_monthly_cumulative_rain,
 )
