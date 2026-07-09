@@ -56,6 +56,52 @@ def test_render_rain_across_year():
     assert obtained_hash == expected_hash, f"El hash de la figura {output_path}"
 
 
+def test_render_temperature_across_year():
+    output_path = "tests/data/temperature_norte_bosque_2017.png"
+    expected_hash = "6a8492c74864eb46b1cbd1cad734949b"
+    gtt.if_exist_remove(output_path)
+    year = 2017
+    input_path = "tests/data/input_plot_average_rain_by_zone.csv"
+    result = runner.invoke(
+        cli,
+        [
+            "render-temperature-across-year",
+            "--input-path",
+            input_path,
+            "--years",
+            year,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    gtt.assert_exist(output_path)
+    obtained_hash = gtt.calculate_hash(output_path)
+    assert obtained_hash == expected_hash, f"El hash de la figura {output_path}"
+
+    expected_hash = "443261dffc62e08b6cc63b253431767f"
+    output_path = "tests/multiannual_temperature.png"
+    gtt.if_exist_remove(output_path)
+    result = runner.invoke(
+        cli,
+        [
+            "render-temperature-across-year",
+            "--input-path",
+            input_path,
+            "--years",
+            2017,
+            "--years",
+            2021,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    gtt.assert_exist(output_path)
+    obtained_hash = gtt.calculate_hash(output_path)
+    assert obtained_hash == expected_hash, f"El hash de la figura {output_path}"
+
+
 def test_remove_outliers():
     input_path = "tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv"
     output_path = "tests/no_outliers_estaciones_meteorologicas_guadalupe_for_tests.csv"
