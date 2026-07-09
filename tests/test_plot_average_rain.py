@@ -6,6 +6,7 @@ from guadalupe_weather.get_weather_data import (
     get_monthly_average_cumulative_rain_by_zone,
     get_multiannual_monthly_temperature,
     get_multiannual_monthly_cumulative_rain,
+    xxget_multiannual_monthly_cumulative_rain,
 )
 
 from guadalupe_weather.plot_weather_variables import (
@@ -176,6 +177,7 @@ def test_plot_average_rain_hash():
 def test_get_multiannual_monthly_cumulative_rain():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     years = [2017, 2021]
+    monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
     obtained_multianual_monthly_cumulative_rain = get_multiannual_monthly_cumulative_rain(
         monthly_average_rain_path, years
     )
@@ -187,8 +189,8 @@ def test_get_multiannual_monthly_cumulative_rain():
     assert obtained_september_cumulative_rain == expected_september_cumulative_rain
 
     years = [2017]
-    obtained_annual_monthly_cumulative_rain = get_multiannual_monthly_cumulative_rain(
-        monthly_average_rain_path, years
+    obtained_annual_monthly_cumulative_rain = xxget_multiannual_monthly_cumulative_rain(
+        monthly_average_rain_df, years
     )
     expected_length_data_to_plot = 10
     obtained_length_data_to_plot = len(obtained_annual_monthly_cumulative_rain)
