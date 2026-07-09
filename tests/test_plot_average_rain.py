@@ -117,15 +117,12 @@ def test_get_string_label_temperature():
 
 
 def test_plot_average_temperature_hash():
-    png_path = "tests/data/temperature_norte_bosque_2017.png"
-    if os.path.exists(png_path):
-        os.remove(png_path)
     year = [2017]
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
     data_to_plot = get_multiannual_monthly_temperature(monthly_average_rain_df, year)
     box_plot_data = get_box_plot_data_temperature(monthly_average_rain_df)
-    obtained = plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year)
+    obtained = plot_average_temperature_by_zone(data_to_plot, box_plot_data, year)
     assert isinstance(obtained, plt.axes._axes.Axes)
 
     expected_ylabel = r"Temperature ($^{\circ}C$)"
