@@ -32,8 +32,8 @@ def test_render_rain_across_year():
     assert obtained_hash == expected_hash, f"El hash de la figura {output_path}"
 
     expected_hash = "5a1467b7a0cfc082a3ab0d634dac0cf1"
+    output_path = "tests/multiannual_rain.png"
     gtt.if_exist_remove(output_path)
-    year = 2017
     input_path = "tests/data/input_plot_average_rain_by_zone.csv"
     result = runner.invoke(
         cli,
