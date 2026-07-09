@@ -57,8 +57,6 @@ def get_box_plot_data_temperature(monthly_average_df):
 
 
 def compute_monthly_boxplot_data_by_variable(monthly_data, variable):
-    print(monthly_data)
     data_grouped_by_month = monthly_data.groupby(["Month"])
-    print(data_grouped_by_month)
     box_plot_data = [month_data[1][variable].to_numpy() for month_data in data_grouped_by_month]
     return box_plot_data

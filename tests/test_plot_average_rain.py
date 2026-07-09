@@ -66,7 +66,6 @@ def test_get_monthly_average_cumulative_rain_by_zone():
 def test_get_monthly_and_annual_average_cumulative_rain_by_zone():
     data = pd.read_csv("tests/data/input_plot_average_rain_by_zone.csv")
     obtained_data = get_monthly_and_annual_average_cumulative_rain_by_zone(data)
-    print(obtained_data)
     obtained_average_rain_jannuary_2017 = obtained_data[obtained_data["Year"] == 2017][
         "Cumulative_rain"
     ][0]
