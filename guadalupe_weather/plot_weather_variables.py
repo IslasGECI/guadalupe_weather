@@ -87,13 +87,8 @@ def plot_average_and_boxplot_by_variable(
 
 
 def plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year_list):
-    string_label = get_string_label_temperature(year_list)
-    y_label = r"Temperature ($^{\circ}C$)"
-    box_label = "Temperature typical year"
-    y_lim_max = 30
-    plot_average_and_boxplot_by_variable(
-        data_to_plot, box_plot_data, string_label, y_label, y_lim_max, box_label
-    )
+    variable = "temperature"
+    xxplot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list)
     plt.savefig(png_path, dpi=300)
 
 
