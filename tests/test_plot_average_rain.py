@@ -142,7 +142,7 @@ def test_plot_average_temperature_hash():
 
 def test_plot_average_rain_hash():
     png_path = "tests/data/cumulative_rain_norte_bosque_2017.png"
-    year = 2017
+    year = [2017]
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     data_to_plot = get_monthly_cumulative_rain_by_year(monthly_average_rain_path, year)
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
