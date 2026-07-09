@@ -13,6 +13,7 @@ import typer
 from typing_extensions import Annotated
 import pandas as pd
 from typing import List
+import matplotlib.pyplot as plt
 
 cli = typer.Typer()
 
@@ -27,6 +28,7 @@ def render_rain_across_year(
     data_to_plot = get_multiannual_monthly_cumulative_rain(input_path, years)
     box_plot_data = get_box_plot_data(monthly_average_rain_df)
     plot_average_rain_by_zone(data_to_plot, box_plot_data, output_path, years)
+    plt.savefig(output_path, dpi=300)
 
 
 @cli.command()
