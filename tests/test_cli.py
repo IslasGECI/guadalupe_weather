@@ -8,6 +8,30 @@ import geci_test_tools as gtt
 runner = CliRunner()
 
 
+def test_render_rain_across_year():
+    output_path = "tests/data/cumulative_rain_norte_bosque_2017.png"
+    expected_hash = "376512ca588928fed5b10d9325b5317f"
+    gtt.if_exist_remove(output_path)
+    year = 2017
+    input_path = "tests/data/input_plot_average_rain_by_zone.csv"
+    result = runner.invoke(
+        cli,
+        [
+            "render-rain-across-year",
+            "--input-path",
+            input_path,
+            "--years",
+            year,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    gtt.assert_exist(output_path)
+    obtained_hash = gtt.calculate_hash(output_path)
+    assert obtained_hash == expected_hash, f"El hash de la figura {output_path}"
+
+
 def test_remove_outliers():
     input_path = "tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv"
     output_path = "tests/no_outliers_estaciones_meteorologicas_guadalupe_for_tests.csv"
