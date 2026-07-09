@@ -27,7 +27,7 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
         },
         "rain": {
             "y_label": "Monthly rainfall (mm/month)",
-            "string_label": get_string_label,
+            "string_label": get_string_label_rain,
             "box_label": "Rain typical year",
             "y_lim_max": 50,
         },
@@ -69,7 +69,7 @@ def get_string_label_temperature(years):
     return f"Temperature in {years}"
 
 
-def get_string_label(years):
+def get_string_label_rain(years):
     if len(years) > 1:
         return f"Rain in {*years, }"
     return f"Rain in {years[0]}"

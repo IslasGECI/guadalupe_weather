@@ -11,7 +11,7 @@ from guadalupe_weather.get_weather_data import (
 from guadalupe_weather.plot_weather_variables import (
     get_months_labels_list,
     get_string_label_temperature,
-    get_string_label,
+    get_string_label_rain,
     plot_average_rain_by_zone,
     plot_average_temperature_by_zone,
 )
@@ -96,11 +96,11 @@ def test_get_box_plot_data():
 
 def test_get_string_label():
     year = [2017]
-    obtained_string_label = get_string_label(year)
+    obtained_string_label = get_string_label_rain(year)
     expected_string_label = "Rain in 2017"
     assert obtained_string_label == expected_string_label, "Just an integer"
     years_list = [2017, 2018]
-    obtained_string_label = get_string_label(years_list)
+    obtained_string_label = get_string_label_rain(years_list)
     expected_string_label = "Rain in (2017, 2018)"
     assert obtained_string_label == expected_string_label, "List of years"
 
