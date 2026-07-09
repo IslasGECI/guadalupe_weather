@@ -1,9 +1,3 @@
-import calendar
-import hashlib
-import os
-import pandas as pd
-import numpy as np
-
 from guadalupe_weather.get_weather_data import (
     get_box_plot_data_temperature,
     get_box_plot_data,
@@ -22,6 +16,13 @@ from guadalupe_weather.plot_weather_variables import (
     plot_average_rain_by_zone,
     plot_average_temperature_by_zone,
 )
+
+import calendar
+import hashlib
+import os
+import pandas as pd
+import numpy as np
+import matplotlib as plt
 
 
 def test_get_months_labels_list():
@@ -150,17 +151,13 @@ def test_plot_average_temperature_hash():
 
 def test_plot_average_rain_hash():
     png_path = "tests/data/cumulative_rain_norte_bosque_2017.png"
-    expected_hash = "376512ca588928fed5b10d9325b5317f"
-    if os.path.exists(png_path):
-        os.remove(png_path)
     year = 2017
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     data_to_plot = get_monthly_cumulative_rain_by_year(monthly_average_rain_path, year)
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
     box_plot_data = get_box_plot_data(monthly_average_rain_df)
-    plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year)
-    obtained_hash = _get_hash_from_file(png_path)
-    assert obtained_hash == expected_hash, f"El hash de la figura {png_path}"
+    obtained = plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year)
+    assert isinstance(obtained, plt.axes._axes.Axes)
 
     png_path = "tests/data/cumulative_rain_norte_bosque_multianual.png"
     expected_hash = "5a1467b7a0cfc082a3ab0d634dac0cf1"

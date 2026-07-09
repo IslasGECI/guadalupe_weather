@@ -7,8 +7,9 @@ from geci_plots import geci_plot
 
 def plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year_list):
     variable = "rain"
-    plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list)
+    ax = plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list)
     plt.savefig(png_path, dpi=300)
+    return ax
 
 
 def plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year_list):
@@ -60,6 +61,7 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
         [*handles, box_plot["boxes"].pop()], [*labels, config["box_label"]], fontsize=fontsize
     )
     plt.tight_layout()
+    return ax
 
 
 def get_string_label_temperature(years):

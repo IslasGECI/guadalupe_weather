@@ -21,9 +21,8 @@ def render_rain_across_year(
     years: Annotated[int, typer.Option()],
     output_path: Annotated[str, typer.Option()],
 ):
-    print(f"Rendering rain across year {years} from {input_path} to {output_path}")
-    data_to_plot = get_monthly_cumulative_rain_by_year(input_path, years)
     monthly_average_rain_df = pd.read_csv(input_path)
+    data_to_plot = get_monthly_cumulative_rain_by_year(input_path, years)
     box_plot_data = get_box_plot_data(monthly_average_rain_df)
     plot_average_rain_by_zone(data_to_plot, box_plot_data, output_path, years)
 
