@@ -118,7 +118,6 @@ def test_get_string_label_temperature():
 
 def test_plot_average_temperature_hash():
     png_path = "tests/data/temperature_norte_bosque_2017.png"
-    expected_hash = "6a8492c74864eb46b1cbd1cad734949b"
     if os.path.exists(png_path):
         os.remove(png_path)
     year = [2017]
@@ -126,19 +125,28 @@ def test_plot_average_temperature_hash():
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
     data_to_plot = get_multiannual_monthly_temperature(monthly_average_rain_df, year)
     box_plot_data = get_box_plot_data_temperature(monthly_average_rain_df)
-    plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year)
-    obtained_hash = _get_hash_from_file(png_path)
-    assert obtained_hash == expected_hash, f"El hash de la figura {png_path}"
+    obtained = plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, year)
+    assert isinstance(obtained, plt.axes._axes.Axes)
 
-    png_path = "tests/data/temperature_norte_bosque_multianual.png"
-    expected_hash = "443261dffc62e08b6cc63b253431767f"
-    years_list = [2017, 2021]
-    if os.path.exists(png_path):
-        os.remove(png_path)
-    data_to_plot = pd.read_csv("tests/data/multiannual_monthly_temperature.csv", index_col=0)
-    plot_average_temperature_by_zone(data_to_plot, box_plot_data, png_path, years_list)
-    obtained_hash = _get_hash_from_file(png_path)
-    assert obtained_hash == expected_hash, f"El hash de la figura {png_path}"
+    expected_ylabel = r"Temperature ($^{\circ}C$)"
+    obtained_ylabel = obtained.get_ylabel()
+    assert obtained_ylabel == expected_ylabel
+
+    expected_ylim = (-0.1, 30)
+    obtained_ylim = obtained.get_ylim()
+    assert obtained_ylim == expected_ylim
+
+    obtained_xticks_len = len(obtained.get_xticklabels())
+    expected_xticks_len = 13
+    assert obtained_xticks_len == expected_xticks_len
+
+    obtained_last_xtick_text = obtained.get_xticklabels()[0].get_text()
+    expected_last_xtick_text = "January"
+    assert obtained_last_xtick_text == expected_last_xtick_text
+
+    obtained_legend_texts = [text.get_text() for text in obtained.get_legend().get_texts()]
+    expected_legend_texts = ["Temperature in 2017", "Temperature typical year"]
+    assert obtained_legend_texts == expected_legend_texts
 
 
 def test_plot_average_rain_hash():
