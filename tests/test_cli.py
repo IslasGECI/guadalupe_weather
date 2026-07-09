@@ -31,6 +31,29 @@ def test_render_rain_across_year():
     obtained_hash = gtt.calculate_hash(output_path)
     assert obtained_hash == expected_hash, f"El hash de la figura {output_path}"
 
+    expected_hash = "5a1467b7a0cfc082a3ab0d634dac0cf1"
+    gtt.if_exist_remove(output_path)
+    year = 2017
+    input_path = "tests/data/multiannual_monthly_cumulative_rain.csv"
+    result = runner.invoke(
+        cli,
+        [
+            "render-rain-across-year",
+            "--input-path",
+            input_path,
+            "--years",
+            2017,
+            "--years",
+            2021,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    gtt.assert_exist(output_path)
+    obtained_hash = gtt.calculate_hash(output_path)
+    assert obtained_hash == expected_hash, f"El hash de la figura {output_path}"
+
 
 def test_remove_outliers():
     input_path = "tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv"
