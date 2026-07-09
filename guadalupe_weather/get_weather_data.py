@@ -4,6 +4,10 @@ import pandas as pd
 
 def get_multiannual_monthly_cumulative_rain(all_data_path, years_list):
     all_data_df = pd.read_csv(all_data_path)
+    return xxget_multiannual_monthly_cumulative_rain(all_data_df, years_list)
+
+
+def xxget_multiannual_monthly_cumulative_rain(all_data_df, years_list):
     multiannual_data = [
         get_monthly_cumulative_rain_by_year(all_data_df, year) for year in years_list
     ]
