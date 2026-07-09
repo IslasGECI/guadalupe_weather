@@ -6,13 +6,8 @@ from geci_plots import geci_plot
 
 
 def plot_average_rain_by_zone(data_to_plot, box_plot_data, png_path, year_list):
-    string_label = get_string_label(year_list)
-    y_label = "Monthly rainfall (mm/month)"
-    y_lim_max = 50
-    box_label = "Rain typical year"
-    plot_average_and_boxplot_by_variable(
-        data_to_plot, box_plot_data, string_label, y_label, y_lim_max, box_label
-    )
+    variable = "rain"
+    xxplot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list)
     plt.savefig(png_path, dpi=300)
 
 
