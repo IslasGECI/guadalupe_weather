@@ -45,7 +45,7 @@ def render_rain_across_year(
     monthly_average_rain_df = pd.read_csv(input_path)
     data_to_plot = get_multiannual_monthly_cumulative_rain(monthly_average_rain_df, years)
     box_plot_data = get_box_plot_data(monthly_average_rain_df)
-    plot_average_rain_by_zone(data_to_plot, box_plot_data, output_path, years)
+    plot_average_rain_by_zone(data_to_plot, box_plot_data, years)
     plt.savefig(output_path, dpi=300)
 
 
