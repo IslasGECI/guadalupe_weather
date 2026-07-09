@@ -34,7 +34,7 @@ def test_render_rain_across_year():
     expected_hash = "5a1467b7a0cfc082a3ab0d634dac0cf1"
     gtt.if_exist_remove(output_path)
     year = 2017
-    input_path = "tests/data/multiannual_monthly_cumulative_rain.csv"
+    input_path = "tests/data/input_plot_average_rain_by_zone.csv"
     result = runner.invoke(
         cli,
         [
