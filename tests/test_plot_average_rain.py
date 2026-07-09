@@ -1,7 +1,7 @@
 from guadalupe_weather.get_weather_data import (
     get_box_plot_data_temperature,
     get_box_plot_data,
-    xxget_data_by_year,
+    get_data_by_year,
     get_monthly_and_annual_average_cumulative_rain_by_zone,
     get_monthly_average_cumulative_rain_by_zone,
     get_monthly_temperature_by_year,
@@ -41,7 +41,7 @@ def test_get_data_by_year():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     expected_rain_data_by_year = pd.read_csv("tests/data/rain_2017_data_by_zone.csv")
     monthly_average_rain = pd.read_csv(monthly_average_rain_path)
-    obtained_rain_data_by_year = xxget_data_by_year(monthly_average_rain, year)
+    obtained_rain_data_by_year = get_data_by_year(monthly_average_rain, year)
     pd.testing.assert_frame_equal(
         obtained_rain_data_by_year.reset_index(drop=True),
         expected_rain_data_by_year.reset_index(drop=True),
@@ -49,7 +49,7 @@ def test_get_data_by_year():
     year = 2018
     expected_rain_data_by_year = pd.DataFrame(columns=obtained_rain_data_by_year.columns)
 
-    obtained_rain_data_by_year = xxget_data_by_year(monthly_average_rain, year)
+    obtained_rain_data_by_year = get_data_by_year(monthly_average_rain, year)
     pd.testing.assert_frame_equal(
         obtained_rain_data_by_year.reset_index(drop=True),
         expected_rain_data_by_year.reset_index(drop=True),

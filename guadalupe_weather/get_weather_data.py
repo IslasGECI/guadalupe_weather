@@ -18,22 +18,17 @@ def get_multiannual_monthly_temperature(all_data_path, years_list):
 
 def get_monthly_cumulative_rain_by_year(monthly_average_rain_path, year):
     monthly_average_rain = pd.read_csv(monthly_average_rain_path)
-    data_by_year = xxget_data_by_year(monthly_average_rain, year)
+    data_by_year = get_data_by_year(monthly_average_rain, year)
     return get_monthly_average_cumulative_rain_by_zone(data_by_year)
 
 
 def get_monthly_temperature_by_year(monthly_average_rain_path, year):
     monthly_average_rain = pd.read_csv(monthly_average_rain_path)
-    data_by_year = xxget_data_by_year(monthly_average_rain, year)
+    data_by_year = get_data_by_year(monthly_average_rain, year)
     return get_monthly_average_temperature_by_zone(data_by_year)
 
 
 def get_data_by_year(monthly_average_data, year):
-    all_data = pd.read_csv(monthly_average_data)
-    return xxget_data_by_year(all_data, year)
-
-
-def xxget_data_by_year(monthly_average_data, year):
     data_by_year = monthly_average_data[monthly_average_data["Year"] == year]
     return data_by_year
 
