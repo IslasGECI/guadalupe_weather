@@ -106,7 +106,7 @@ def test_get_string_label():
 
 
 def test_get_string_label_temperature():
-    year = 2017
+    year = [2017]
     obtained_string_label = get_string_label_temperature(year)
     expected_string_label = "Temperature in 2017"
     assert obtained_string_label == expected_string_label, "Just an integer"
@@ -121,7 +121,7 @@ def test_plot_average_temperature_hash():
     expected_hash = "6a8492c74864eb46b1cbd1cad734949b"
     if os.path.exists(png_path):
         os.remove(png_path)
-    year = 2017
+    year = [2017]
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
     data_to_plot = get_monthly_temperature_by_year(monthly_average_rain_df, year)
