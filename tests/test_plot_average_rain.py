@@ -176,6 +176,10 @@ def test_plot_average_rain_hash():
     expected_last_xtick_text = "December"
     assert obtained_last_xtick_text == expected_last_xtick_text
 
+    obtained_legend_texts = [text.get_text() for text in obtained.get_legend().get_texts()]
+    expected_legend_texts = ["Rain in 2017", "Rain typical year"]
+    assert obtained_legend_texts == expected_legend_texts
+
     png_path = "tests/data/cumulative_rain_norte_bosque_multianual.png"
     expected_hash = "5a1467b7a0cfc082a3ab0d634dac0cf1"
     years_list = [2017, 2021]
