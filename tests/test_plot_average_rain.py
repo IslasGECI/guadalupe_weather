@@ -17,8 +17,6 @@ from guadalupe_weather.plot_weather_variables import (
 )
 
 import calendar
-import hashlib
-import os
 import pandas as pd
 import numpy as np
 import matplotlib as plt
@@ -28,12 +26,6 @@ def test_get_months_labels_list():
     obtained_list = get_months_labels_list()
     expected_list = calendar.month_name[1:]
     assert obtained_list == expected_list
-
-
-def _get_hash_from_file(png_path):
-    file_content = open(png_path, "rb").read()
-    obtained_hash = hashlib.md5(file_content).hexdigest()
-    return obtained_hash
 
 
 def test_get_data_by_year():

@@ -4,7 +4,6 @@ import geci_test_tools as gtt
 from typer.testing import CliRunner
 import pandas as pd
 import numpy as np
-import pytest
 
 runner = CliRunner()
 
