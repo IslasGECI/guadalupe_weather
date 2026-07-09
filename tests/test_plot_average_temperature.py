@@ -5,7 +5,6 @@ import numpy as np
 from guadalupe_weather.get_weather_data import (
     get_monthly_average_temperature_by_zone,
     get_box_plot_data_temperature,
-    get_multiannual_monthly_temperature,
     xxget_multiannual_monthly_temperature,
 )
 
@@ -51,7 +50,7 @@ def test_get_multiannual_monthly_temperature():
     assert obtained_december_temperature == expected_december_temperature
 
     years = [2017]
-    obtained_data_to_plot = get_multiannual_monthly_temperature(monthly_average_rain_path, years)
+    obtained_data_to_plot = xxget_multiannual_monthly_temperature(monthly_average_rain_df, years)
     expected_length_data_to_plot = 10
     obtained_length_data_to_plot = len(obtained_data_to_plot)
     assert expected_length_data_to_plot == obtained_length_data_to_plot
