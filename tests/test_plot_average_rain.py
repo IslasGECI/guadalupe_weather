@@ -94,7 +94,7 @@ def test_get_box_plot_data():
 
 
 def test_get_string_label():
-    year = 2017
+    year = [2017]
     obtained_string_label = get_string_label(year)
     expected_string_label = "Rain in 2017"
     assert obtained_string_label == expected_string_label, "Just an integer"
