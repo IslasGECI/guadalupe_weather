@@ -1,5 +1,4 @@
 from guadalupe_weather.plot_boxplot_typical_year import plot_boxplot_typical_year
-from guadalupe_weather.get_weather_data import get_box_plot_data_temperature
 
 
 import matplotlib as plt
