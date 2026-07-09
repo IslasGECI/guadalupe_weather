@@ -3,7 +3,7 @@ from guadalupe_weather.get_outliers import (
     _remove_outliers_for_column,
 )
 from guadalupe_weather.get_weather_data import (
-    get_multiannual_monthly_cumulative_rain,
+    xxget_multiannual_monthly_cumulative_rain,
     get_box_plot_data,
 )
 from guadalupe_weather.plot_weather_variables import plot_average_rain_by_zone
@@ -25,7 +25,7 @@ def render_rain_across_year(
     output_path: Annotated[str, typer.Option()],
 ):
     monthly_average_rain_df = pd.read_csv(input_path)
-    data_to_plot = get_multiannual_monthly_cumulative_rain(input_path, years)
+    data_to_plot = xxget_multiannual_monthly_cumulative_rain(monthly_average_rain_df, years)
     box_plot_data = get_box_plot_data(monthly_average_rain_df)
     plot_average_rain_by_zone(data_to_plot, box_plot_data, output_path, years)
     plt.savefig(output_path, dpi=300)
