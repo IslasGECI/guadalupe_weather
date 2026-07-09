@@ -4,9 +4,14 @@ from guadalupe_weather.get_outliers import (
 )
 from guadalupe_weather.get_weather_data import (
     get_multiannual_monthly_cumulative_rain,
+    get_multiannual_monthly_temperature,
     get_box_plot_data,
+    get_box_plot_data_temperature,
 )
-from guadalupe_weather.plot_weather_variables import plot_average_rain_by_zone
+from guadalupe_weather.plot_weather_variables import (
+    plot_average_rain_by_zone,
+    plot_average_temperature_by_zone,
+)
 from guadalupe_weather import __version__
 
 import typer
@@ -16,6 +21,19 @@ from typing import List
 import matplotlib.pyplot as plt
 
 cli = typer.Typer()
+
+
+@cli.command()
+def render_temperature_across_year(
+    input_path: Annotated[str, typer.Option()],
+    years: Annotated[List[int], typer.Option()],
+    output_path: Annotated[str, typer.Option()],
+):
+    monthly_average_rain_df = pd.read_csv(input_path)
+    data_to_plot = get_multiannual_monthly_temperature(monthly_average_rain_df, years)
+    box_plot_data = get_box_plot_data_temperature(monthly_average_rain_df)
+    plot_average_temperature_by_zone(data_to_plot, box_plot_data, output_path, years)
+    plt.savefig(output_path, dpi=300)
 
 
 @cli.command()
