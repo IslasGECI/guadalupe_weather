@@ -7,7 +7,7 @@ from guadalupe_weather.get_weather_data import (
     get_box_plot_data,
 )
 from guadalupe_weather.plot_weather_variables import plot_average_rain_by_zone
-import guadalupe_weather as gw
+from guadalupe_weather import __version__
 
 import typer
 from typing_extensions import Annotated
@@ -54,4 +54,4 @@ def remove_outliers_for_column(
 
 @cli.command()
 def version():
-    print(gw.__version__)
+    print(__version__)
