@@ -28,7 +28,11 @@ def get_monthly_temperature_by_year(monthly_average_rain_path, year):
 
 def get_data_by_year(monthly_average_data, year):
     all_data = pd.read_csv(monthly_average_data)
-    data_by_year = all_data[all_data["Year"] == year]
+    return xxget_data_by_year(all_data, year)
+
+
+def xxget_data_by_year(monthly_average_data, year):
+    data_by_year = monthly_average_data[monthly_average_data["Year"] == year]
     return data_by_year
 
 
