@@ -62,10 +62,6 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
     plt.tight_layout()
 
 
-def get_y_max_limit(all_years_data):
-    return 50
-
-
 def get_string_label_temperature(years):
     if isinstance(years, list):
         return f"Temperature in {*years, }"

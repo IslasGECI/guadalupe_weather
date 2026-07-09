@@ -19,7 +19,6 @@ from guadalupe_weather.plot_weather_variables import (
     get_months_labels_list,
     get_string_label_temperature,
     get_string_label,
-    get_y_max_limit,
     plot_average_rain_by_zone,
     plot_average_temperature_by_zone,
 )
@@ -88,15 +87,6 @@ def test_get_monthly_and_annual_average_cumulative_rain_by_zone():
     ][0]
     expected_average_rain_jannuary_2017 = 20.6
     assert obtained_average_rain_jannuary_2017 == expected_average_rain_jannuary_2017
-
-
-def test_get_y_max_limit():
-    monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
-    monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
-    box_plot_data = get_box_plot_data(monthly_average_rain_df)
-    obtained_limit = get_y_max_limit(box_plot_data)
-    expected_limit = 50
-    assert obtained_limit == expected_limit
 
 
 def test_get_box_plot_data():
