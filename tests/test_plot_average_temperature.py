@@ -5,7 +5,7 @@ import numpy as np
 from guadalupe_weather.get_weather_data import (
     get_monthly_average_temperature_by_zone,
     get_box_plot_data_temperature,
-    get_monthly_temperature_by_year,
+    xxget_monthly_temperature_by_year,
     get_multiannual_monthly_temperature,
 )
 
@@ -13,7 +13,8 @@ from guadalupe_weather.get_weather_data import (
 def tests_get_monthly_temperature_by_year():
     year = 2017
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
-    obtained_data_to_plot = get_monthly_temperature_by_year(monthly_average_rain_path, year)
+    monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
+    obtained_data_to_plot = xxget_monthly_temperature_by_year(monthly_average_rain_df, year)
     expected_length_data_to_plot = 10
     obtained_length_data_to_plot = len(obtained_data_to_plot)
     assert expected_length_data_to_plot == obtained_length_data_to_plot
