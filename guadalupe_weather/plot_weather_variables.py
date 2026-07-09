@@ -64,9 +64,10 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
 
 
 def get_string_label_temperature(years):
-    if isinstance(years, list):
-        return f"Temperature in {*years, }"
-    return f"Temperature in {years}"
+    variable = "Temperature"
+    if len(years) > 1:
+        return f"{variable} in {*years, }"
+    return f"{variable} in {years[0]}"
 
 
 def get_string_label_rain(years):
