@@ -71,9 +71,9 @@ def get_string_label_temperature(years):
 
 
 def get_string_label(years):
-    if isinstance(years, list):
+    if len(years) > 1:
         return f"Rain in {*years, }"
-    return f"Rain in {years}"
+    return f"Rain in {years[0]}"
 
 
 def get_months_labels_list() -> list:
