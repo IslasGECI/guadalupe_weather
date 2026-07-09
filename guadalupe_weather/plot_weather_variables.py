@@ -68,17 +68,15 @@ def get_string_label_temperature(years):
     return get_string_label_for_variable(variable, years)
 
 
+def get_string_label_rain(years):
+    variable = "Rain"
+    return get_string_label_for_variable(variable, years)
+
+
 def get_string_label_for_variable(variable, years):
     if len(years) > 1:
         return f"{variable} in {*years, }"
     return f"{variable} in {years[0]}"
-
-
-def get_string_label_rain(years):
-    if len(years) > 1:
-        return f"Rain in {*years, }"
-    return f"Rain in {years[0]}"
-
 
 def get_months_labels_list() -> list:
     return list(calendar.month_name[1:])
