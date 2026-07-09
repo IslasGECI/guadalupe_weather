@@ -70,15 +70,6 @@ def test_get_monthly_average_cumulative_rain_by_zone():
     assert expected_february_monthly_average == obtained_february_monthly_average
 
 
-def tests_get_monthly_cumulative_rain_by_year():
-    year = 2017
-    monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
-    obtained_data_to_plot = get_monthly_cumulative_rain_by_year(monthly_average_rain_path, year)
-    expected_length_data_to_plot = 10
-    obtained_length_data_to_plot = len(obtained_data_to_plot)
-    assert expected_length_data_to_plot == obtained_length_data_to_plot
-
-
 def test_get_monthly_and_annual_average_cumulative_rain_by_zone():
     data = pd.read_csv("tests/data/input_plot_average_rain_by_zone.csv")
     obtained_data = get_monthly_and_annual_average_cumulative_rain_by_zone(data)
@@ -203,3 +194,11 @@ def test_get_multiannual_monthly_cumulative_rain():
     obtained_september_cumulative_rain = obtained_multianual_monthly_cumulative_rain.iloc[8]
     expected_september_cumulative_rain = 8.065
     assert obtained_september_cumulative_rain == expected_september_cumulative_rain
+
+    years = [2017]
+    obtained_annual_monthly_cumulative_rain = get_multiannual_monthly_cumulative_rain(
+        monthly_average_rain_path, years
+    )
+    expected_length_data_to_plot = 10
+    obtained_length_data_to_plot = len(obtained_annual_monthly_cumulative_rain)
+    assert expected_length_data_to_plot == obtained_length_data_to_plot
