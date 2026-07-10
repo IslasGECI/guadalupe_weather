@@ -28,6 +28,22 @@ def test_render_boxplot_of_typical_year():
     assert result.exit_code == 0
     gtt.assert_exist(output_path)
 
+    variable = "Rain"
+    result = runner.invoke(
+        cli,
+        [
+            "render-typical-year-boxplot",
+            "--input-path",
+            input_path,
+            "--variable-of-interest",
+            variable,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    gtt.assert_exist(output_path)
+
 
 def test_render_rain_across_year():
     output_path = "tests/data/cumulative_rain_norte_bosque_2017.png"
