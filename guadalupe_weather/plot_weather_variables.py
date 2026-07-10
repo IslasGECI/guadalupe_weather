@@ -12,7 +12,7 @@ def plot_average_rain_by_zone(data_to_plot, box_plot_data, year_list):
         "y_lim_max": 50,
     }
     variable = "Rain"
-    ax = xxplot_average_and_boxplot_by_variable(
+    ax = plot_average_and_boxplot_by_variable(
         data_to_plot, box_plot_data, variable, year_list, config
     )
     return ax
@@ -25,15 +25,13 @@ def plot_average_temperature_by_zone(data_to_plot, box_plot_data, year_list):
         "y_lim_max": 30,
     }
     variable = "Temperature"
-    ax = xxplot_average_and_boxplot_by_variable(
+    ax = plot_average_and_boxplot_by_variable(
         data_to_plot, box_plot_data, variable, year_list, config
     )
     return ax
 
 
-def xxplot_average_and_boxplot_by_variable(
-    data_to_plot, box_plot_data, variable, year_list, config
-):
+def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list, config):
     fontsize = 20
     fig, ax = geci_plot()
     box_plot = add_boxplot(box_plot_data, config, fontsize, ax)
