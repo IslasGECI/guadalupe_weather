@@ -7,6 +7,7 @@ from guadalupe_weather.get_weather_data import (
     get_multiannual_monthly_temperature,
     get_box_plot_data,
     get_box_plot_data_without_nan,
+    xxget_box_plot_data_without_nan,
 )
 from guadalupe_weather.plot_weather_variables import (
     plot_average_rain_by_zone,
@@ -58,8 +59,9 @@ def render_temperature_across_year(
     output_path: Annotated[str, typer.Option()],
 ):
     monthly_average_df = pd.read_csv(input_path)
+    variable = "Avg_Temp_Out"
     data_to_plot = get_multiannual_monthly_temperature(monthly_average_df, years)
-    box_plot_data = get_box_plot_data_without_nan(monthly_average_df)
+    box_plot_data = xxget_box_plot_data_without_nan(monthly_average_df, variable)
     plot_average_temperature_by_zone(data_to_plot, box_plot_data, years)
     plt.savefig(output_path, dpi=300)
 
