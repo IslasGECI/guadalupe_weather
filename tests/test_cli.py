@@ -8,6 +8,27 @@ import numpy as np
 runner = CliRunner()
 
 
+def test_render_boxplot_of_typical_year():
+    output_path = "tests/data/boxplot_tests.png"
+    gtt.if_exist_remove(output_path)
+    input_path = "tests/data/input_plot_average_rain_by_zone.csv"
+    variable = "Temperature"
+    result = runner.invoke(
+        cli,
+        [
+            "render-typical-year-boxplot",
+            "--input-path",
+            input_path,
+            "--variable-of-interest",
+            variable,
+            "--output-path",
+            output_path,
+        ],
+    )
+    assert result.exit_code == 0
+    gtt.assert_exist(output_path)
+
+
 def test_render_rain_across_year():
     output_path = "tests/data/cumulative_rain_norte_bosque_2017.png"
     expected_hash = "376512ca588928fed5b10d9325b5317f"
