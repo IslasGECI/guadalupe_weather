@@ -12,6 +12,7 @@ from guadalupe_weather.plot_weather_variables import (
     plot_average_rain_by_zone,
     plot_average_temperature_by_zone,
 )
+from guadalupe_weather.plot_boxplot_typical_year import plot_boxplot_typical_year
 from guadalupe_weather import __version__
 
 import typer
@@ -24,14 +25,31 @@ cli = typer.Typer()
 
 
 @cli.command()
+def render_typical_year_boxplot(
+    input_path: Annotated[str, typer.Option()],
+    variable_of_interest: Annotated[str, typer.Option()],
+    output_path: Annotated[str, typer.Option()],
+):
+    config = {
+        "y_label": r"Temperature ($^{\circ}C$)",
+        "box_label": "Temperature typical year",
+        "y_lim_max": 30,
+    }
+    monthly_average_df = pd.read_csv(input_path)
+    box_plot_data = get_box_plot_data_temperature(monthly_average_df)
+    plot_boxplot_typical_year(box_plot_data, config)
+    plt.savefig(output_path, dpi=300)
+
+
+@cli.command()
 def render_temperature_across_year(
     input_path: Annotated[str, typer.Option()],
     years: Annotated[List[int], typer.Option()],
     output_path: Annotated[str, typer.Option()],
 ):
-    monthly_average_rain_df = pd.read_csv(input_path)
-    data_to_plot = get_multiannual_monthly_temperature(monthly_average_rain_df, years)
-    box_plot_data = get_box_plot_data_temperature(monthly_average_rain_df)
+    monthly_average_df = pd.read_csv(input_path)
+    data_to_plot = get_multiannual_monthly_temperature(monthly_average_df, years)
+    box_plot_data = get_box_plot_data_temperature(monthly_average_df)
     plot_average_temperature_by_zone(data_to_plot, box_plot_data, years)
     plt.savefig(output_path, dpi=300)
 
