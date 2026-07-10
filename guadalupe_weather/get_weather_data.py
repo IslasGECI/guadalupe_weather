@@ -43,19 +43,13 @@ def get_monthly_average_temperature_by_zone(data_by_year):
     return data_by_year.groupby(["Month"])["Avg_Temp_Out"].mean()
 
 
-def get_box_plot_data(monthly_data):
-    variable = "Cumulative_rain"
-    box_plot_data = compute_monthly_boxplot_data_by_variable(monthly_data, variable)
-    return box_plot_data
-
-
 def get_box_plot_data_without_nan(monthly_average_df, variable):
-    box_plot_data = compute_monthly_boxplot_data_by_variable(monthly_average_df, variable)
+    box_plot_data = get_boxplot_data(monthly_average_df, variable)
     box_plot_data_without_nan = [month[~np.isnan(month)] for month in box_plot_data]
     return box_plot_data_without_nan
 
 
-def compute_monthly_boxplot_data_by_variable(monthly_data, variable):
+def get_boxplot_data(monthly_data, variable):
     data_grouped_by_month = monthly_data.groupby(["Month"])
     box_plot_data = [month_data[1][variable].to_numpy() for month_data in data_grouped_by_month]
     return box_plot_data
