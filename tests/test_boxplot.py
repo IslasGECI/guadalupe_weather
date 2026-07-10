@@ -1,4 +1,4 @@
-from guadalupe_weather.plot_boxplot_typical_year import xxplot_boxplot_typical_year
+from guadalupe_weather.plot_boxplot_typical_year import plot_boxplot_typical_year
 
 
 import matplotlib as plt
@@ -12,7 +12,7 @@ def test_plot_boxplot_typical_year():
         "box_label": "Temperature typical year",
         "y_lim_max": 30,
     }
-    obtained = xxplot_boxplot_typical_year(boxplot_data, config)
+    obtained = plot_boxplot_typical_year(boxplot_data, config)
     plt.pyplot.savefig("tests/data/boxplot_typical_year.png", dpi=300)
     assert isinstance(obtained, plt.axes._axes.Axes)
 
