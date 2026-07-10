@@ -1,5 +1,5 @@
 from guadalupe_weather.get_weather_data import (
-    get_box_plot_data_without_nan,
+    xxget_box_plot_data_without_nan,
     get_box_plot_data,
     get_data_by_year,
     get_monthly_and_annual_average_cumulative_rain_by_zone,
@@ -113,7 +113,8 @@ def test_plot_average_temperature_hash():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
     data_to_plot = get_multiannual_monthly_temperature(monthly_average_rain_df, year)
-    box_plot_data = get_box_plot_data_without_nan(monthly_average_rain_df)
+    variable = "Avg_Temp_Out"
+    box_plot_data = xxget_box_plot_data_without_nan(monthly_average_rain_df, variable)
     obtained = plot_average_temperature_by_zone(data_to_plot, box_plot_data, year)
     assert isinstance(obtained, plt.axes._axes.Axes)
 
