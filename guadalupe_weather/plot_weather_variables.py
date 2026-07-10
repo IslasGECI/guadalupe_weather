@@ -55,25 +55,6 @@ def xxplot_average_and_boxplot_by_variable(
     return ax
 
 
-def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list):
-    config_by_variable = {
-        "Temperature": {
-            "y_label": r"Temperature ($^{\circ}C$)",
-            "box_label": "Temperature typical year",
-            "y_lim_max": 30,
-        },
-        "Rain": {
-            "y_label": "Monthly rainfall (mm/month)",
-            "box_label": "Rain typical year",
-            "y_lim_max": 50,
-        },
-    }
-    config = config_by_variable[variable]
-    return xxplot_average_and_boxplot_by_variable(
-        data_to_plot, box_plot_data, variable, year_list, config
-    )
-
-
 def get_string_label_temperature(years):
     variable = "Temperature"
     return get_string_label_for_variable(variable, years)
