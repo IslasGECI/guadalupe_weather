@@ -12,7 +12,7 @@ def test_render_boxplot_of_typical_year():
     output_path = "tests/data/boxplot_tests.png"
     gtt.if_exist_remove(output_path)
     input_path = "tests/data/input_plot_average_rain_by_zone.csv"
-    variable = "Temperature"
+    variable = "Avg_Temp_Out"
     result = runner.invoke(
         cli,
         [
@@ -28,7 +28,7 @@ def test_render_boxplot_of_typical_year():
     assert result.exit_code == 0
     gtt.assert_exist(output_path)
 
-    variable = "Rain"
+    variable = "Cumulative_rain"
     result = runner.invoke(
         cli,
         [

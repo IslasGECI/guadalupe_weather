@@ -3,6 +3,7 @@ from guadalupe_weather.get_outliers import (
     _remove_outliers_for_column,
 )
 from guadalupe_weather.get_weather_data import (
+    compute_monthly_boxplot_data_by_variable,
     get_multiannual_monthly_cumulative_rain,
     get_multiannual_monthly_temperature,
     get_box_plot_data,
@@ -32,22 +33,22 @@ def render_typical_year_boxplot(
     output_path: Annotated[str, typer.Option()],
 ):
     config_by_variable = {
-        "Temperature": {
+        "Avg_Temp_Out": {
             "y_label": r"Temperature ($^{\circ}C$)",
             "box_label": "Temperature typical year",
             "y_lim_max": 30,
-            "boxplot_method": get_box_plot_data_without_nan,
+            "boxplot_method": xxget_box_plot_data_without_nan,
         },
-        "Rain": {
+        "Cumulative_rain": {
             "y_label": "Monthly rainfall (mm/month)",
             "box_label": "Rain typical year",
             "y_lim_max": 50,
-            "boxplot_method": get_box_plot_data,
+            "boxplot_method": compute_monthly_boxplot_data_by_variable,
         },
     }
     monthly_average_df = pd.read_csv(input_path)
     config = config_by_variable.get(variable_of_interest)
-    box_plot_data = config["boxplot_method"](monthly_average_df)
+    box_plot_data = config["boxplot_method"](monthly_average_df, variable_of_interest)
     plot_boxplot_typical_year(box_plot_data, config)
     plt.savefig(output_path, dpi=300)
 
