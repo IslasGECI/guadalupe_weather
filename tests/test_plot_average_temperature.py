@@ -4,7 +4,7 @@ import numpy as np
 
 from guadalupe_weather.get_weather_data import (
     get_monthly_average_temperature_by_zone,
-    xxget_box_plot_data_without_nan,
+    get_box_plot_data_without_nan,
     get_multiannual_monthly_temperature,
 )
 
@@ -27,7 +27,7 @@ def test_get_box_plot_data_temperature():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
     variable = "Avg_Temp_Out"
-    obtained_box_plot_data = xxget_box_plot_data_without_nan(monthly_average_rain_df, variable)
+    obtained_box_plot_data = get_box_plot_data_without_nan(monthly_average_rain_df, variable)
     obtained_january_box_plot_data = obtained_box_plot_data[0]
     expected_january_box_plot_data = np.array([8.5, 14.5, 10.0])
     np.testing.assert_equal(obtained_january_box_plot_data, expected_january_box_plot_data)
