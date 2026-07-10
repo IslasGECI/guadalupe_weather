@@ -17,20 +17,9 @@ def plot_average_temperature_by_zone(data_to_plot, box_plot_data, year_list):
     return ax
 
 
-def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list):
-    config_by_variable = {
-        "Temperature": {
-            "y_label": r"Temperature ($^{\circ}C$)",
-            "box_label": "Temperature typical year",
-            "y_lim_max": 30,
-        },
-        "Rain": {
-            "y_label": "Monthly rainfall (mm/month)",
-            "box_label": "Rain typical year",
-            "y_lim_max": 50,
-        },
-    }
-    config = config_by_variable[variable]
+def xxplot_average_and_boxplot_by_variable(
+    data_to_plot, box_plot_data, variable, year_list, config
+):
     fontsize = 20
     fig, ax = geci_plot()
     box_plot = add_boxplot(box_plot_data, config, fontsize, ax)
@@ -50,6 +39,25 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
     )
     format_axis_elements(config, fontsize, ax)
     return ax
+
+
+def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list):
+    config_by_variable = {
+        "Temperature": {
+            "y_label": r"Temperature ($^{\circ}C$)",
+            "box_label": "Temperature typical year",
+            "y_lim_max": 30,
+        },
+        "Rain": {
+            "y_label": "Monthly rainfall (mm/month)",
+            "box_label": "Rain typical year",
+            "y_lim_max": 50,
+        },
+    }
+    config = config_by_variable[variable]
+    return xxplot_average_and_boxplot_by_variable(
+        data_to_plot, box_plot_data, variable, year_list, config
+    )
 
 
 def get_string_label_temperature(years):
