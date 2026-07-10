@@ -12,8 +12,15 @@ def plot_average_rain_by_zone(data_to_plot, box_plot_data, year_list):
 
 
 def plot_average_temperature_by_zone(data_to_plot, box_plot_data, year_list):
+    config = {
+        "y_label": r"Temperature ($^{\circ}C$)",
+        "box_label": "Temperature typical year",
+        "y_lim_max": 30,
+    }
     variable = "Temperature"
-    ax = plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list)
+    ax = xxplot_average_and_boxplot_by_variable(
+        data_to_plot, box_plot_data, variable, year_list, config
+    )
     return ax
 
 
