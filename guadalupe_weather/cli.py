@@ -37,6 +37,12 @@ def render_typical_year_boxplot(
             "y_lim_max": 30,
             "boxplot_method": get_box_plot_data_temperature,
         },
+        "Rain": {
+            "y_label": "Monthly rainfall (mm/month)",
+            "box_label": "Rain typical year",
+            "y_lim_max": 50,
+            "boxplot_method": get_box_plot_data,
+        },
     }
     monthly_average_df = pd.read_csv(input_path)
     config = config_by_variable.get(variable_of_interest)
