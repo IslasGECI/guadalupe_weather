@@ -3,31 +3,31 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 from geci_plots import geci_plot
+from guadalupe_weather.plot_boxplot_typical_year import add_boxplot
+from guadalupe_weather.fortmat_axis_elements import format_axis_elements
 
 
 def plot_average_rain_by_zone(data_to_plot, box_plot_data, year_list):
-    variable = "rain"
+    variable = "Rain"
     ax = plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list)
     return ax
 
 
 def plot_average_temperature_by_zone(data_to_plot, box_plot_data, year_list):
-    variable = "temperature"
+    variable = "Temperature"
     ax = plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list)
     return ax
 
 
 def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list):
     config_by_variable = {
-        "temperature": {
+        "Temperature": {
             "y_label": r"Temperature ($^{\circ}C$)",
-            "string_label": get_string_label_temperature,
             "box_label": "Temperature typical year",
             "y_lim_max": 30,
         },
-        "rain": {
+        "Rain": {
             "y_label": "Monthly rainfall (mm/month)",
-            "string_label": get_string_label_rain,
             "box_label": "Rain typical year",
             "y_lim_max": 50,
         },
@@ -35,7 +35,8 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
     config = config_by_variable[variable]
     fontsize = 20
     fig, ax = geci_plot()
-    box_plot = ax.boxplot(box_plot_data, patch_artist=True, boxprops=dict(facecolor="white"))
+    box_plot = add_boxplot(box_plot_data, config, fontsize, ax)
+    string_label = get_string_label_for_variable(variable, year_list)
     ax.plot(
         data_to_plot.index,
         data_to_plot.values,
@@ -43,7 +44,7 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
         linewidth=2,
         markeredgecolor="k",
         markersize=5,
-        label=config["string_label"](year_list),
+        label=string_label,
     )
     handles, labels = ax.get_legend_handles_labels()
     plt.legend(
@@ -51,20 +52,6 @@ def plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, 
     )
     format_axis_elements(config, fontsize, ax)
     return ax
-
-
-def format_axis_elements(config, fontsize, ax):
-    ticks_positions = np.linspace(1, 12, 12)
-    months_labels = get_months_labels_list()
-    plt.xticks([*ticks_positions, 13], [*months_labels, ""], size=fontsize, rotation=90)
-    plt.yticks(size=fontsize)
-    plt.ylabel(config["y_label"], size=fontsize)
-    y_lim_min = -0.1
-    ax.set_ylim(
-        y_lim_min,
-        config["y_lim_max"],
-    )
-    plt.tight_layout()
 
 
 def get_string_label_temperature(years):
@@ -81,7 +68,3 @@ def get_string_label_for_variable(variable, years):
     if len(years) > 1:
         return f"{variable} in {*years, }"
     return f"{variable} in {years[0]}"
-
-
-def get_months_labels_list() -> list:
-    return list(calendar.month_name[1:])

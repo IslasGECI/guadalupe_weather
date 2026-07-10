@@ -1,4 +1,4 @@
-from guadalupe_weather.plot_weather_variables import (
+from guadalupe_weather.fortmat_axis_elements import (
     format_axis_elements,
 )
 
@@ -8,25 +8,27 @@ import matplotlib.pyplot as plt
 
 def plot_boxplot_typical_year(boxplot_limits_df):
     config_by_variable = {
-        "temperature": {
+        "Temperature": {
             "y_label": r"Temperature ($^{\circ}C$)",
             "box_label": "Temperature typical year",
             "y_lim_max": 30,
         },
-        "rain": {
+        "Rain": {
             "y_label": "Monthly rainfall (mm/month)",
             "box_label": "Rain typical year",
             "y_lim_max": 50,
         },
     }
-    variable = "temperature"
+    variable = "Temperature"
     config = config_by_variable[variable]
     fontsize = 20
     fig, ax = geci_plot()
-    box_plot = ax.boxplot(boxplot_limits_df, patch_artist=True, boxprops=dict(facecolor="white"))
-    handles, labels = ax.get_legend_handles_labels()
-    plt.legend(
-        [*handles, box_plot["boxes"].pop()], [*labels, config["box_label"]], fontsize=fontsize
-    )
+    add_boxplot(boxplot_limits_df, config, fontsize, ax)
     format_axis_elements(config, fontsize, ax)
     return ax
+
+
+def add_boxplot(boxplot_limits_df, config, fontsize, ax):
+    box_plot = ax.boxplot(boxplot_limits_df, patch_artist=True, boxprops=dict(facecolor="white"))
+    plt.legend([box_plot["boxes"].pop()], [config["box_label"]], fontsize=fontsize)
+    return box_plot

@@ -9,12 +9,13 @@ from guadalupe_weather.get_weather_data import (
 )
 
 from guadalupe_weather.plot_weather_variables import (
-    get_months_labels_list,
     get_string_label_temperature,
     get_string_label_rain,
     plot_average_rain_by_zone,
     plot_average_temperature_by_zone,
 )
+
+from guadalupe_weather.fortmat_axis_elements import get_months_labels_list
 
 import calendar
 import pandas as pd
