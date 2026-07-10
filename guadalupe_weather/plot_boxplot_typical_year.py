@@ -21,6 +21,10 @@ def plot_boxplot_typical_year(boxplot_limits_df):
     }
     variable = "Temperature"
     config = config_by_variable[variable]
+    return xxplot_boxplot_typical_year(boxplot_limits_df, config)
+
+
+def xxplot_boxplot_typical_year(boxplot_limits_df, config):
     fontsize = 20
     fig, ax = geci_plot()
     add_boxplot(boxplot_limits_df, config, fontsize, ax)

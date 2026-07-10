@@ -1,5 +1,3 @@
-import calendar
-import numpy as np
 import matplotlib.pyplot as plt
 
 from geci_plots import geci_plot
