@@ -30,13 +30,17 @@ def render_typical_year_boxplot(
     variable_of_interest: Annotated[str, typer.Option()],
     output_path: Annotated[str, typer.Option()],
 ):
-    config = {
-        "y_label": r"Temperature ($^{\circ}C$)",
-        "box_label": "Temperature typical year",
-        "y_lim_max": 30,
+    config_by_variable = {
+        "Temperature": {
+            "y_label": r"Temperature ($^{\circ}C$)",
+            "box_label": "Temperature typical year",
+            "y_lim_max": 30,
+            "boxplot_method": get_box_plot_data_temperature,
+        },
     }
     monthly_average_df = pd.read_csv(input_path)
-    box_plot_data = get_box_plot_data_temperature(monthly_average_df)
+    config = config_by_variable.get(variable_of_interest)
+    box_plot_data = config["boxplot_method"](monthly_average_df)
     plot_boxplot_typical_year(box_plot_data, config)
     plt.savefig(output_path, dpi=300)
 
