@@ -6,8 +6,15 @@ from guadalupe_weather.fortmat_axis_elements import format_axis_elements
 
 
 def plot_average_rain_by_zone(data_to_plot, box_plot_data, year_list):
+    config = {
+        "y_label": "Monthly rainfall (mm/month)",
+        "box_label": "Rain typical year",
+        "y_lim_max": 50,
+    }
     variable = "Rain"
-    ax = plot_average_and_boxplot_by_variable(data_to_plot, box_plot_data, variable, year_list)
+    ax = xxplot_average_and_boxplot_by_variable(
+        data_to_plot, box_plot_data, variable, year_list, config
+    )
     return ax
 
 
