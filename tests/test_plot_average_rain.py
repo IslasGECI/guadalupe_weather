@@ -1,4 +1,5 @@
 from guadalupe_weather.get_weather_data import (
+    compute_monthly_boxplot_data_by_variable,
     get_box_plot_data_without_nan,
     get_box_plot_data,
     get_data_by_year,
@@ -77,7 +78,10 @@ def test_get_monthly_and_annual_average_cumulative_rain_by_zone():
 def test_get_box_plot_data():
     monthly_average_rain_path = "tests/data/input_plot_average_rain_by_zone.csv"
     monthly_average_rain_df = pd.read_csv(monthly_average_rain_path)
-    obtained_box_plot_data = get_box_plot_data(monthly_average_rain_df)
+    variable = "Cumulative_rain"
+    obtained_box_plot_data = compute_monthly_boxplot_data_by_variable(
+        monthly_average_rain_df, variable
+    )
     obtained_january_box_plot_data = obtained_box_plot_data[0]
     expected_january_box_plot_data = np.array([30.8, 0.0, 10.4, 0.0])
     assert (obtained_january_box_plot_data == expected_january_box_plot_data).all()
