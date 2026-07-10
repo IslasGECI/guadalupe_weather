@@ -1,7 +1,6 @@
 from guadalupe_weather.get_weather_data import (
     compute_monthly_boxplot_data_by_variable,
     get_box_plot_data_without_nan,
-    get_box_plot_data,
     get_data_by_year,
     get_monthly_and_annual_average_cumulative_rain_by_zone,
     get_monthly_average_cumulative_rain_by_zone,

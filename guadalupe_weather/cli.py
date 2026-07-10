@@ -6,7 +6,6 @@ from guadalupe_weather.get_weather_data import (
     compute_monthly_boxplot_data_by_variable,
     get_multiannual_monthly_cumulative_rain,
     get_multiannual_monthly_temperature,
-    get_box_plot_data,
     get_box_plot_data_without_nan,
 )
 from guadalupe_weather.plot_weather_variables import (
@@ -74,7 +73,8 @@ def render_rain_across_year(
 ):
     monthly_average_rain_df = pd.read_csv(input_path)
     data_to_plot = get_multiannual_monthly_cumulative_rain(monthly_average_rain_df, years)
-    box_plot_data = get_box_plot_data(monthly_average_rain_df)
+    variable = "Cumulative_rain"
+    box_plot_data = compute_monthly_boxplot_data_by_variable(monthly_average_rain_df, variable)
     plot_average_rain_by_zone(data_to_plot, box_plot_data, years)
     plt.savefig(output_path, dpi=300)
 
