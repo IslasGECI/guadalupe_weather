@@ -9,12 +9,26 @@ def _remove_outliers(data):
     tukey_selector = TukeyMethodSelector()
 
     for column in tukey_selector.variables.keys():
-        method = tukey_selector.select_method(column)
-        linf, lsup = method(data, column)
-        print(f"{column} limits: (Inferior: {linf:.2f}, Superior: {lsup:.2f})")
-        outliers = get_outliers(data_copy[column], linf, lsup)
-        data_copy[column] = data_copy[column].replace(outliers, np.nan)
+        data_copy[column] = compute_outliers_for_column(data, column, data_copy, tukey_selector)
     return data_copy
+
+
+def _remove_outliers_for_column(data, column_name):
+    data_copy = data.copy()
+    tukey_selector = TukeyMethodSelector()
+    data_copy[column_name] = compute_outliers_for_column(
+        data, column_name, data_copy, tukey_selector
+    )
+    return data_copy
+
+
+def compute_outliers_for_column(data, column_name, data_copy, tukey_selector):
+    column_data = data[column_name]
+    method = tukey_selector.select_method(column_name)
+    linf, lsup = method(data_copy, column_name)
+    print(f"{column_name} limits: (Inferior: {linf:.2f}, Superior: {lsup:.2f})")
+    outliers = get_outliers(column_data, linf, lsup)
+    return column_data.replace(outliers, np.nan)
 
 
 class TukeyMethodSelector:
@@ -34,18 +48,6 @@ class TukeyMethodSelector:
 
     def select_method(self, variable):
         return self.variables[variable]
-
-
-def _remove_outliers_for_column(data, column_name):
-    data_copy = data.copy()
-    column_data = data[column_name]
-    tukey_selector = TukeyMethodSelector()
-    method = tukey_selector.select_method(column_name)
-    linf, lsup = method(data_copy, column_name)
-    print(f"{column_name} limits: (Inferior: {linf:.2f}, Superior: {lsup:.2f})")
-    outliers = get_outliers(column_data, linf, lsup)
-    data_copy[column_name] = column_data.replace(outliers, np.nan)
-    return data_copy
 
 
 def get_tukey_fences_for_rain(data, variable):
