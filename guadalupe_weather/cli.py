@@ -30,23 +30,26 @@ def render_typical_year_boxplot(
     variable_of_interest: Annotated[str, typer.Option()],
     output_path: Annotated[str, typer.Option()],
 ):
+    boxplot_methods = {
+        "Avg_Temp_Out": get_boxplot_data_without_nan,
+        "Cumulative_rain": get_boxplot_data,
+    }
     config_by_variable = {
         "Avg_Temp_Out": {
             "y_label": r"Temperature ($^{\circ}C$)",
             "box_label": "Temperature typical year",
             "y_lim_max": 30,
-            "boxplot_method": get_boxplot_data_without_nan,
         },
         "Cumulative_rain": {
             "y_label": "Monthly rainfall (mm/month)",
             "box_label": "Rain typical year",
             "y_lim_max": 50,
-            "boxplot_method": get_boxplot_data,
         },
     }
     monthly_average_df = pd.read_csv(input_path)
-    config = config_by_variable.get(variable_of_interest)
-    box_plot_data = config["boxplot_method"](monthly_average_df, variable_of_interest)
+    config = config_by_variable[variable_of_interest]
+    boxplot_method = boxplot_methods[variable_of_interest]
+    box_plot_data = boxplot_method(monthly_average_df, variable_of_interest)
     plot_boxplot_typical_year(box_plot_data, config)
     plt.savefig(output_path, dpi=300)
 
