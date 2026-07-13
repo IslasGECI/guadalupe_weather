@@ -1,4 +1,5 @@
 from guadalupe_weather.cli import cli
+from guadalupe_weather import __version__
 import geci_test_tools as gtt
 
 from typer.testing import CliRunner
@@ -185,5 +186,5 @@ def test_remove_outliers_for_column():
 
 def test_version():
     result = runner.invoke(cli, ["version"])
-    expected_version = "0.3.1"
+    expected_version = __version__
     assert expected_version in result.stdout

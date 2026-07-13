@@ -6,14 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-
-### Added
-
 ### Fixed
+### Added
+### Changed
+### Removed
+
+## [0.4.0] - 2026-07-13
+### Added
+- CLI command `render-typical-year-boxplot`: render a boxplot of a typical year for temperature or cumulative rain.
+- CLI command `render-temperature-across-year`: plot monthly temperature across selected years with a typical-year boxplot overlay.
+- CLI command `render-rain-across-year`: plot monthly cumulative rainfall across selected years with a typical-year boxplot overlay.
 
 ### Changed
-
-### Removed
+- `get_weather_data` functions now accept DataFrames instead of file paths.
+- `plot_weather_variables` functions no longer accept `png_path`; they return the `Axes` object instead.
 
 ## [0.3.1] - 2026-02-11
 ### Fixed
@@ -48,5 +54,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Extracted package from [`clima_guadalupe`](https://bitbucket.org/IslasGECI/clima_guadalupe/src/develop/
 )
 
-[unreleased]: https://github.com/IslasGECI/guadalupe_weather/compare/v1.1.1...HEAD
+[unreleased]: https://github.com/IslasGECI/guadalupe_weather/compare/v0.3.1...HEAD
 [0.1.0]: https://github.com/IslasGECI/guadalupe_weather/releases/tag/v0.0.1
