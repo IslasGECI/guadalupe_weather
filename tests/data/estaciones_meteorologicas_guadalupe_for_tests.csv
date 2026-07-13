@@ -1,4 +1,4 @@
-Estacion,Date,Time,Temp_Out,Hi_Temp,Low_Temp,Out_Hum,Dew_Pt,Wind_Speed,Wind_Dir,Wind_Run,Hi_Speed,Hi_Dir,Wind_Chill,Heat_Index,THW_Index,THSW_Index,Bar,Rain,Rain_Rate,Solar_Rad,Solar_Energy,Hi_Solar_Rad,UV_Index,UV_Dose,Hi_UV,Heat_D_D,Cool_D_D,In_Temp,In_Hum,In_Dew,In_Heat,ET,In_EMC,In_Air_Density,Wind_Samp,Wind_Tx,ISS_Recept,Arc_Int
+Estacion,Fecha,Time,Temp_Out,Hi_Temp,Low_Temp,Out_Hum,Dew_Pt,Wind_Speed,Wind_Dir,Wind_Run,Hi_Speed,Hi_Dir,Wind_Chill,Heat_Index,THW_Index,THSW_Index,Bar,Rain,Rain_Rate,Solar_Rad,Solar_Energy,Hi_Solar_Rad,UV_Index,UV_Dose,Hi_UV,Heat_D_D,Cool_D_D,In_Temp,In_Hum,In_Dew,In_Heat,ET,In_EMC,In_Air_Density,Wind_Samp,Wind_Tx,ISS_Recept,Arc_Int
 Norte,29/Sep/2008,03:00:00,19.2,19.2,19.1,88,17.1,17.7,NW,17.7,27.4,NW,17.7,19.9,18.4,NA,758.7,0,0,NA,NA,NA,NA,NA,NA,0,0.035,18.9,59,10.8,18.5,NA,NA,NA,1334,3,100,60
 Norte,01/Oct/2008,03:00:00,19.2,19.2,19.1,88,17.1,17.7,NW,17.7,27.4,NW,17.7,19.9,18.4,NA,758.7,0,0,NA,NA,NA,NA,NA,NA,0,0.035,18.9,59,10.8,18.5,NA,NA,NA,1334,3,100,60
 Bosque,28/Sep/2008,04:00:00,19.2,19.2,19.1,88,17.1,14.5,NW,14.48,20.9,NW,18.4,19.9,19.2,NA,758.9,0,0,NA,NA,NA,NA,NA,NA,0,0.035,18.8,59,10.6,18.4,NA,NA,NA,1334,3,100,60

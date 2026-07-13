@@ -60,6 +60,7 @@ def tests_remove_outliers_for_column():
 
 def tests_remove_outliers():
     data = pd.read_csv("tests/data/estaciones_meteorologicas_guadalupe_for_tests.csv")
+    data.rename(columns={"Fecha": "Date"}, inplace=True)
     obtained = _remove_outliers(data)
     assert obtained.Rain.isna().sum() == 1
 
