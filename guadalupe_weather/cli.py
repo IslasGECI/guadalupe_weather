@@ -88,7 +88,8 @@ def remove_outliers(
     output_path: Annotated[str, typer.Option()],
 ):
     data = pd.read_csv(input_path)
-    no_outliers_df = _remove_outliers(data)
+    adapted_data = data.rename(columns={"Fecha": "Date"})
+    no_outliers_df = _remove_outliers(adapted_data)
     no_outliers_df.to_csv(output_path, index=False)
 
 
@@ -99,7 +100,8 @@ def remove_outliers_for_column(
     output_path: Annotated[str, typer.Option()],
 ):
     data = pd.read_csv(input_path)
-    no_outliers_df = _remove_outliers_for_column(data, column_name)
+    adapted_data = data.rename(columns={"Fecha": "Date"})
+    no_outliers_df = _remove_outliers_for_column(adapted_data, column_name)
     no_outliers_df.to_csv(output_path, index=False)
 
 
